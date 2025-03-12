@@ -1,0 +1,65 @@
+create SEQUENCE mjsq1
+INCREMENT by 1
+START with 1
+MAXVALUE 44
+CYCLE;
+
+
+insert into major values('00','바보','정방향','모험, 무지',mjsq1.nextval,'‪D:\그림\메이저\0. 바보 카드.jpg');
+insert into major values('00','바보','역방향','경솔, 어리석음',mjsq1.nextval,'‪‪D:\그림\메이저\0. 바보 카드-역.jpg');
+insert into major values('01','마법사','정방향','창조, 수완',mjsq1.nextval,'D:\그림\메이저\1. 마법사 카드.jpg');
+insert into major values('01','마법사','정방향','겁많음, 기만',mjsq1.nextval,'‪D:\그림\메이저\1. 마법사 카드-역.jpg');
+insert into major values('02','여사제','정방향','지식, 총명',mjsq1.nextval,'‪‪D:\그림\메이저\2. 여사제 카드.jpg');
+insert into major values('02','여사제','역방향','풍양, 모성',mjsq1.nextval,'‪D:\그림\메이저\2. 여사제 카드-역.jpg');
+insert into major values('03','여황제','정방향','풍양, 모성',mjsq1.nextval,'‪‪D:\그림\메이저\3. 여황제 카드.jpg');
+insert into major values('03','여황제','역방향','과잉, 허영',mjsq1.nextval,'‪D:\그림\메이저\3. 여황제 카드-역.jpg');
+insert into major values('04','황제','정방향','책임, 부성',mjsq1.nextval,'D:\그림\메이저\4. 황제 카드.jpg');
+insert into major values('04','황제','역방향','오만, 존대',mjsq1.nextval,'D:\그림\메이저\4. 황제 카드-역.jpg');
+insert into major values('05','교황','정방향','가르침, 관대함',mjsq1.nextval,'‪D:\그림\메이저\5. 교황 카드.jpg');
+insert into major values('05','교황','역방향','협량, 나태',mjsq1.nextval,'‪D:\그림\메이저\5. 교황 카드-역.jpg');
+insert into major values('06','연인','정방향','연애, 쾌락',mjsq1.nextval,'D:\그림\메이저\6. 연인 카드.jpg');
+insert into major values('06','연인','역방향','질투, 배신, 실연',mjsq1.nextval,'D:\그림\메이저\6. 연인 카드-역.jpg');
+insert into major values('07','전차','정방향','전진, 승리',mjsq1.nextval,'D:\그림\메이저\7. 전차 카드.jpg');
+insert into major values('07','전차','역방향','폭주, 좌절, 패배',mjsq1.nextval,'D:\그림\메이저\7. 전차 카드-역.jpg');
+insert into major values('08','힘','정방향','힘, 용기',mjsq1.nextval,'‪D:\그림\메이저\8. 힘 카드.jpg');
+insert into major values('08','힘','역방향','본성, 자만',mjsq1.nextval,'‪D:\그림\메이저\8. 힘 카드-역.jpg');
+insert into major values('09','은둔자','정방향','탐색, 사려깊음',mjsq1.nextval,'‪D:\그림\메이저\9. 은둔자 카드.jpg');
+insert into major values('09','은둔자','역방향','음습, 패쇄, 탐욕',mjsq1.nextval,'‪D:\그림\메이저\9. 은둔자 카드-역.jpg');
+insert into major values('10','운명의 수례바퀴','정방향','기회, 일시적인 행운',mjsq1.nextval,'‪D:\그림\메이저\10. 운명의 수레바퀴.jpg');
+insert into major values('10','운명의 수례바퀴','역방향','오산, 불운',mjsq1.nextval,'‪D:\그림\메이저\10. 운명의 수레바퀴-역.jpg');
+insert into major values('11','정의','정방향','균형, 정당함',mjsq1.nextval,'‪D:\그림\메이저\11. 정의 카드.jpg');
+insert into major values('11','정의','역방향','불균형, 편견, 부정',mjsq1.nextval,'‪D:\그림\메이저\11. 정의 카드-역.jpg');
+insert into major values('12','행맨','정방향','자기희생, 인내',mjsq1.nextval,'‪D:\그림\메이저\12. 행맨 카드.jpg');
+insert into major values('12','행맨','역방향','무의미한 희생, 맹목',mjsq1.nextval,'‪D:\그림\메이저\12. 행맨 카드-역.jpg');
+insert into major values('13','죽음','정방향','격변, 이별',mjsq1.nextval,'D:\그림\메이저\13. 죽음 카드.jpg');
+insert into major values('13','죽음','역방향','변화의 유보, 고착',mjsq1.nextval,'D:\그림\메이저\13. 죽음 카드-역.jpg');
+insert into major values('14','절제','정방향','조화, 견실',mjsq1.nextval,'D:\그림\메이저\14. 절제 카드.jpg');
+insert into major values('14','절제','역방향','낭비, 불안정',mjsq1.nextval,'D:\그림\메이저\14. 절제 카드-역.jpg');
+insert into major values('15','악마','정방향','사심, 속박, 타락',mjsq1.nextval,'D:\그림\메이저\15. 악마 카드.jpg');
+insert into major values('15','악마','역방향','악순환으로부터의 각성',mjsq1.nextval,'D:\그림\메이저\15. 악마 카드.jpg-역');
+insert into major values('16','타워','정방향','파괴, 파멸',mjsq1.nextval,'D:\그림\메이저\16. 타워 카드.jpg');
+insert into major values('16','타워','역방향','필요로 하는 파괴',mjsq1.nextval,'D:\그림\메이저\16. 타워 카드-역.jpg');
+insert into major values('17','별','정방향','희망, 동경',mjsq1.nextval,'D:\그림\메이저\17. 별 카드.jpg');
+insert into major values('17','별','역방향','환멸, 비애',mjsq1.nextval,'D:\그림\메이저\17. 별 카드-역.jpg');
+insert into major values('18','달','정방향','불안, 혼돈, 애매함',mjsq1.nextval,'D:\그림\메이저\18. 달 카드.jpg');
+insert into major values('18','달','역방향','불안 해소, 혼돈의 끝, 명료함',mjsq1.nextval,'D:\그림\메이저\18. 달 카드-역.jpg');
+insert into major values('19','태양','정방향','밝은 미래, 만족',mjsq1.nextval,'D:\그림\메이저\19. 태양 카드.jpg');
+insert into major values('19','태양','역방향','연기, 실패',mjsq1.nextval,'D:\그림\메이저\19. 태양 카드-역.jpg');
+insert into major values('20','심판','정방향','부활, 개선',mjsq1.nextval,'D:\그림\메이저\20. 심판 카드.jpg');
+insert into major values('20','심판','역방향','재기불능, 후회',mjsq1.nextval,'D:\그림\메이저\20. 심판 카드-역.jpg');
+insert into major values('21','세계','정방향','완성, 완전',mjsq1.nextval,'D:\그림\메이저\21. 세계 카드.jpg');
+insert into major values('21','세계','역방향','미완성 어중간함',mjsq1.nextval,'D:\그림\메이저\21. 세계 카드-역.jpg');
+
+
+
+
+
+
+
+
+
+
+
+
+
+

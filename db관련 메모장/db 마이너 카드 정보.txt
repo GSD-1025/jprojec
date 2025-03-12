@@ -1,0 +1,66 @@
+create SEQUENCE misq1
+INCREMENT by 1
+START with 1
+MAXVALUE 56
+CYCLE;
+
+insert into minor values('01','완드','창조력, 출발',misq1,'‪D:\그림\마이너2\완드 에이스.jpg');
+insert into minor values('02','완드','재산, 장엄함',misq1,'‪D:\그림\마이너2\완드2.jpg');
+insert into minor values('03','완드','확립된 힘, 교역',misq1,'‪D:\그림\마이너2\완드3.jpg');
+insert into minor values('04','완드','작업의 완성, 교역',misq1,'‪D:\그림\마이너2\완드4.jpg');
+insert into minor values('05','완드','치열한 경쟁, 스포츠',misq1,'‪D:\그림\마이너2\완드5.jpg');
+insert into minor values('06','완드','승리자, 대뉴스의 도달',misq1,'‪D:\그림\마이너2\완드6.jpg');
+insert into minor values('07','완드','용기, 토론',misq1,'‪D:\그림\마이너2\완드7.jpg');
+insert into minor values('08','완드','활동성, 재빠름',misq1,'‪D:\그림\마이너2\완드8.jpg');
+insert into minor values('09','완드','억압된 상항에서의 강함',misq1,'‪D:\그림\마이너2\완드9.jpg');
+insert into minor values('10','완드','억압, 너무 많은 재산',misq1,'‪D:\그림\마이너2\완드10.jpg');
+insert into minor values('페이지','완드','젊은 남자, 충심',misq1,'‪D:\그림\마이너2\완드 페이지.jpg');
+insert into minor values('나이트','완드','출발, 친숙한 젊은이',misq1,'‪D:\그림\마이너2\완드 나이트.jpg');
+insert into minor values('퀸','완드','친숙한, 정적',misq1,'‪D:\그림\마이너2\완드 퀸.jpg');
+insert into minor values('킹','완드','정직, 양심적',misq1,'‪D:\그림\마이너2\완드 킹.jpg');
+
+insert into minor values('01','컵','기쁨, 만족',misq1,'‪D:\그림\마이너3\컵 에이스.jpg');
+insert into minor values('02','컵','사랑, 우정',misq1,'‪D:\그림\마이너3\컵2.jpg');
+insert into minor values('03','컵','풍족함, 행복',misq1,'‪D:\그림\마이너3\컵3.jpg');
+insert into minor values('04','컵','권태, 포식',misq1,'‪D:\그림\마이너3\컵4.jpg');
+insert into minor values('05','컵','손실, 별거 아닌 유산',misq1,'‪D:\그림\마이너3\컵5.jpg');
+insert into minor values('06','컵','과거를 돌이켜봄, 행복',misq1,'‪D:\그림\마이너3\컵6.jpg');
+insert into minor values('07','컵','환상, 약간의 성공(비영구적)',misq1,'‪D:\그림\마이너3\컵7.jpg');
+insert into minor values('08','컵','성공의 방치, 겸손',misq1,'‪D:\그림\마이너3\컵8.jpg');
+insert into minor values('09','컵','물질적 안녕, 만족',misq1,'‪D:\그림\마이너3\컵9.jpg');
+insert into minor values('10','컵','만족, 가정',misq1,'‪D:\그림\마이너3\컵10.jpg');
+insert into minor values('페이지','컵','공부에 힘쓰는 젊은이, 숙고',misq1,'‪D:\그림\마이너3\컵 페이지.jpg');
+insert into minor values('나이트','컵','도착, 발전',misq1,'‪D:\그림\마이너3\컵 나이트.jpg');
+insert into minor values('퀸','컵','선량한, 행복',misq1,'‪D:\그림\마이너3\컵 퀸.jpg');
+insert into minor values('킹','컵','공정한, 창조적 지성',misq1,'‪D:\그림\마이너3\컵 킹.jpg');
+
+insert into minor values('01','소드','힘의 승리, 권력',misq1,'‪D:\그림\마이너4\소드 에이스.jpg');
+insert into minor values('02','소드','균형, 조건부의 조화',misq1,'‪D:\그림\마이너4\소드2.jpg');
+insert into minor values('03','소드','후퇴, 단절',misq1,'‪D:\그림\마이너4\소드3.jpg');
+insert into minor values('04','소드','은둔, 회복',misq1,'‪D:\그림\마이너4\소드4.jpg');
+insert into minor values('05','소드','타락, 폐지',misq1,'‪D:\그림\마이너4\소드5.jpg');
+insert into minor values('06','소드','작업을 끝마침, 중개자',misq1,'‪D:\그림\마이너4\소드6.jpg');
+insert into minor values('07','소드','기획, 계획',misq1,'‪D:\그림\마이너4\소드7.jpg');
+insert into minor values('08','소드','구속된 힘, 비난',misq1,'‪D:\그림\마이너4\소드8.jpg');
+insert into minor values('09','소드','실망, 환멸',misq1,'‪D:\그림\마이너4\소드9.jpg');
+insert into minor values('10','소드','황폐, 고통',misq1,'‪D:\그림\마이너4\소드10.jpg');
+insert into minor values('페이지','소드','감시, 경계',misq1,'‪D:\그림\마이너4\소드 페이지.jpg');
+insert into minor values('나이트','소드','용감함, 격노',misq1,'‪D:\그림\마이너4\소드 나이트.jpg');
+insert into minor values('퀸','소드','결단력, 미망인',misq1,'‪D:\그림\마이너4\소드 퀸.jpg');
+insert into minor values('킹','소드','재판관, 정의',misq1,'‪D:\그림\마이너4\소드 킹.jpg');
+
+insert into minor values('01','펜타클','완전한 만족, 돈',misq1,'‪D:\그림\마이너1\펜타클 에이스.jpg');
+insert into minor values('02','펜타클','명랑함, 문서에 의한 뉴스&메세지',misq1,'‪D:\그림\마이너1\펜타클2.jpg');
+insert into minor values('03','펜타클','기예, 거래',misq1,'‪D:\그림\마이너1\펜타클3.jpg');
+insert into minor values('04','펜타클','소유의 보정, 집착',misq1,'‪D:\그림\마이너1\펜타클4.jpg');
+insert into minor values('05','펜타클','물질적인 트러블',misq1,'‪D:\그림\마이너1\펜타클5.jpg');
+insert into minor values('06','펜타클','성공, 선물',misq1,'‪D:\그림\마이너1\펜타클6.jpg');
+insert into minor values('07','펜타클','금전, 사업',misq1,'‪D:\그림\마이너1\펜타클7.jpg');
+insert into minor values('08','펜타클','장인 기질, 준비',misq1,'‪D:\그림\마이너1\펜타클8.jpg');
+insert into minor values('09','펜타클','물질적인 풍요, 달성',misq1,'‪D:\그림\마이너1\펜타클9.jpg');
+insert into minor values('10','펜타클','이익, 재산',misq1,'‪D:\그림\마이너1\펜타클10.jpg');
+insert into minor values('페이지','펜타클','정려근면, 학생',misq1,'‪D:\그림\마이너1\펜타클 페이지.jpg');
+insert into minor values('나이트','펜타클','유용, 재산',misq1,'‪D:\그림\마이너1\펜타클 나이트.jpg');
+insert into minor values('퀸','펜타클','부, 관대',misq1,'‪D:\그림\마이너1\펜타클 퀸.jpg');
+insert into minor values('킹','펜타클','실제적인 지성, 사업',misq1,'‪D:\그림\마이너1\펜타클 킹.jpg');
+

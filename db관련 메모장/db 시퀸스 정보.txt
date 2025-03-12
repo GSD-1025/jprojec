@@ -1,0 +1,21 @@
+create SEQUENCE mjsq1
+INCREMENT by 1
+START with 1
+MAXVALUE 44
+CYCLE;
+
+create SEQUENCE misq1
+INCREMENT by 1
+START with 1
+MAXVALUE 56
+CYCLE;
+
+create SEQUENCE osq
+INCREMENT by 1
+START with 1
+nocycle;
+
+create SEQUENCE tsq
+INCREMENT by 1
+START with 1
+nocycle;
