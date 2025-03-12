@@ -9,10 +9,19 @@ public class BasicDAO {
 	private String id="system";
 	private String pass="1111";
 	private Connection conn=null;
+	private static BasicDAO bdao=null;
 	
 	public BasicDAO() {
-	
+		
 	}
+	
+	public static BasicDAO getInstance(){
+		if(bdao==null) {
+			bdao=new BasicDAO();
+		}
+		return bdao;
+	}
+	
 	
 	public Connection getConnection() {
 		try {

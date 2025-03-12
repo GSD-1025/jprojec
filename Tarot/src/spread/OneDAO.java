@@ -1,6 +1,7 @@
 package spread;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -8,6 +9,15 @@ import java.util.ArrayList;
 import card.BasicDAO;
 
 public class OneDAO extends BasicDAO{
+	
+	private static OneDAO odao=null;
+	
+	public static OneDAO getInstance() {
+		if(odao==null) {
+			odao=new OneDAO();
+		}
+		return odao;
+	}
 	
 	public ArrayList<OneDTO> loadOne(){
 		ArrayList<OneDTO> olist=new ArrayList<>();
@@ -40,5 +50,28 @@ public class OneDAO extends BasicDAO{
 			}
 		}
 		return olist;
+	}
+
+	public void insert(OneDTO o) {
+		PreparedStatement psmt=null;
+		Connection conn=null;
+		try {
+			conn=getConnection();
+			String sq1="INSERT INTO one_spread VALUES(osq.nextval,?,?,default,?)";
+			psmt=conn.prepareStatement(sq1);
+			psmt.setInt(1, o.getMnum());
+			psmt.setString(2, o.getInterpret());
+			psmt.setString(3, o.getUnum());
+			psmt.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			try {
+				psmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
 	}
 }
