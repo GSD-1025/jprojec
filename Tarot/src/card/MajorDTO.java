@@ -28,7 +28,8 @@ public class MajorDTO extends Card{
 		System.out.print(this.way);
 		System.out.print(super.getMean());
 		System.out.print(this.majornum);
-		System.out.println(this.majornum);
+		System.out.print(this.majornum);
+		System.out.println(super.getImagepath());
 	}
 	
 }
