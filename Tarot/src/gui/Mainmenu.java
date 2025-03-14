@@ -20,6 +20,9 @@ public class Mainmenu extends JFrame implements ActionListener {
 	private String mt="Main Title";
 	private Font f=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,70);
 	private Mpanel mp=new Mpanel();
+	JButton btn1=new JButton("카드 정보");
+	JButton btn2=new JButton("이용자  정보");
+	JButton btn3=new JButton("카드  펼치기");
 	
 	private JPanel bk=new JPanel() {
 		@Override
@@ -47,9 +50,6 @@ public class Mainmenu extends JFrame implements ActionListener {
 	private void btn() {
 		JPanel btnp=new JPanel();
 		btnp.setOpaque(false);
-		JButton btn1=new JButton("카드 정보");
-		JButton btn2=new JButton("이용자  정보");
-		JButton btn3=new JButton("카드  펼치기");
 		btnp.setLayout(new FlowLayout());
 		btnp.add(btn1);
 		btnp.add(new JLabel("                          "));
@@ -60,8 +60,6 @@ public class Mainmenu extends JFrame implements ActionListener {
 	}
 	
 
-	
-	
 	private void title() {
 		JLabel lb1=new JLabel(mt);
 		lb1.setHorizontalAlignment(JLabel.CENTER);
@@ -72,7 +70,13 @@ public class Mainmenu extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-			
+			if(e.getSource()==btn1) {
+				
+			}else if(e.getSource()==btn2) {
+				
+			}else if(e.getSource()==btn3) {
+				
+			}
 	}
 
 }

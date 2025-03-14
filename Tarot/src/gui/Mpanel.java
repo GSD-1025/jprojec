@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 public class Mpanel extends JPanel{
+
 	
 	public static JPanel panel() {
 		JPanel panel = new JPanel();
@@ -15,4 +16,8 @@ public class Mpanel extends JPanel{
 		panel.add(card.panel());
 		return	panel;		
 	}
+	
+	
+	
+	
 }

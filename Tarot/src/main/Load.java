@@ -56,23 +56,23 @@ public class Load {
 		minor=mi.loadMinor();
 	}
 	
-	public String[] getimagepath(int i) {
+	public String getimagepath(int i, int k) {
 		if(i==1) {
-			String[] mjimp=new String[22];
-			for(int j=0; j<22; j++) {
-				mjimp[j]=major.get(2*j).getImagepath();
-			}
-			return mjimp;
+			return major.get(2*k).getImagepath();
 		}else if(i==2) {
-			String[] miimp=new String[56];
-			for(int j=0; j<56; j++) {
-				miimp[j]=minor.get(j).getImagepath();
-			}
-			return miimp;
+			return minor.get(k).getImagepath();
 		}
 		return null;
 	}
 	
+	public MajorDTO getmajor(int i) {
+		MajorDTO mj=major.get(2*i);
+		return mj;
+	}
+	public MinorDTO getminor(int i) {
+		MinorDTO mi=minor.get(i);
+		return mi;
+	}
 	
 	
 	public void check() { //과정 확인용

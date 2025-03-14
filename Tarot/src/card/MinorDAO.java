@@ -14,7 +14,7 @@ public class MinorDAO extends BasicDAO{
 		Connection conn=null;
 		try {
 			conn=getConnection();
-			String sq1="select * FROM minor";
+			String sq1="SELECT * FROM minor order by minor_num";
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(sq1);
 			while(rs.next()) {
