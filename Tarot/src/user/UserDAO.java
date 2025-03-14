@@ -1,6 +1,7 @@
 package user;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -41,6 +42,32 @@ public class UserDAO extends BasicDAO{
 		
 		return ulist;		
 	}
+	
+	
+	public void insert(UserDTO u) {
+		PreparedStatement psmt=null;
+		Connection conn=null;
+		try {
+			conn=getConnection();
+			String sq1="insert into userinfo values(?,?,?,?)";
+			psmt=conn.prepareStatement(sq1);
+			psmt.setString(1, u.getName());
+			psmt.setString(2, u.getUnum());
+			psmt.setInt(3, u.getAge());
+			psmt.setString(4, u.getPhone());
+			psmt.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			try {
+				psmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
 	
 	
 }

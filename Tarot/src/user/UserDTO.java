@@ -1,5 +1,7 @@
 package user;
 
+import java.util.Random;
+
 import lombok.Data;
 
 @Data
@@ -8,6 +10,7 @@ public class UserDTO {
 	private String unum;
 	private int age;
 	private String phone; 
+	
 	
 	public void prt() {
 		System.out.print(this.name+" ");
