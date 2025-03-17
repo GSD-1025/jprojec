@@ -66,7 +66,7 @@ insert into minor values('퀸','검','결단력, 미망인',misq1.nextval,'‪D:
 insert into minor values('킹','검','재판관, 정의',misq1.nextval,'‪D:\그림\마이너4\소드 킹.jpg');
 
 insert into minor values('01','동전','완전한 만족, 돈',misq1.nextval,'‪D:\그림\마이너1\펜타클 에이스.jpg');
-insert into minor values('02','동전','명랑함, 문서에 의한 뉴스/메세지',misq1.nextval,'‪D:\그림\마이너1\펜타클2.jpg');
+insert into minor values('02','동전','명람함, 문서에 의한 뉴스·메세지',misq1.nextval,'‪D:\그림\마이너1\펜타클2.jpg');
 insert into minor values('03','동전','기예, 거래',misq1.nextval,'‪D:\그림\마이너1\펜타클3.jpg');
 insert into minor values('04','동전','소유의 보정, 집착',misq1.nextval,'‪D:\그림\마이너1\펜타클4.jpg');
 insert into minor values('05','동전','물질적인 트러블',misq1.nextval,'‪D:\그림\마이너1\펜타클5.jpg');

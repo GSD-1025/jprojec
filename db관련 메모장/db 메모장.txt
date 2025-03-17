@@ -19,7 +19,8 @@ create table userinfo(
 name varchar2(10),
 user_num varchar2(15) PRIMARY key,
 age number,
-ph_num varchar2(20));
+ph_num varchar2(20),
+cnt number);
 
 create table one_spread(
 res_num number PRIMARY key,
@@ -30,40 +31,33 @@ user_num varchar2(15),
 CONSTRAINT pull_num FOREIGN key(major_num) REFERENCES major(major_num),
 CONSTRAINT user_num FOREIGN key(user_num) REFERENCES userinfo(user_num));
 
-create table card1(
-pull_num number PRIMARY key,
-pack varchar2(10),
-major_num number,
-minor_num number,
-CONSTRAINT major_num FOREIGN key(major_num) REFERENCES major(major_num),
-CONSTRAINT minor_num FOREIGN key(minor_num) REFERENCES minor(minor_num));
-
-create table card2(
-pull_num number PRIMARY key,
-pack varchar2(10),
-major_num number,
-minor_num number,
-CONSTRAINT major_num2 FOREIGN key(major_num) REFERENCES major(major_num),
-CONSTRAINT minor_num2 FOREIGN key(minor_num) REFERENCES minor(minor_num));
-
-create table card3(
-pull_num number PRIMARY key,
-pack varchar2(10),
-major_num number,
-minor_num number,
-CONSTRAINT major_num3 FOREIGN key(major_num) REFERENCES major(major_num),
-CONSTRAINT minor_num3 FOREIGN key(minor_num) REFERENCES minor(minor_num));
-
+CREATE TABLE PULL_CARD(
+PNUM NUMBER PRIMARY KEY, 
+CARD1 NUMBER, 
+CARD2 NUMBER, 
+CARD3 NUMBER, 
+CARD4 NUMBER, 
+CARD5 NUMBER, 
+CARD6 NUMBER,
+  FOREIGN KEY ("CARD6")
+	  REFERENCES "SYSTEM"."MINOR" ("MINOR_NUM") ENABLE, 
+	 FOREIGN KEY ("CARD5")
+	  REFERENCES "SYSTEM"."MINOR" ("MINOR_NUM") ENABLE, 
+	 FOREIGN KEY ("CARD4")
+	  REFERENCES "SYSTEM"."MINOR" ("MINOR_NUM") ENABLE, 
+	 FOREIGN KEY ("CARD3")
+	  REFERENCES "SYSTEM"."MAJOR" ("MAJOR_NUM") ENABLE, 
+	 FOREIGN KEY ("CARD1")
+	  REFERENCES "SYSTEM"."MAJOR" ("MAJOR_NUM") ENABLE, 
+	 FOREIGN KEY ("CARD2")
+	  REFERENCES "SYSTEM"."MAJOR" ("MAJOR_NUM") ENABLE
+);
 create table three_spread(
 res_num number PRIMARY key,
 user_num varchar2(15),
-card1 number,
-card2 number,
-card3 number,
+pnum number,
 interpret_way varchar2(20),
 interpret varchar(150),
 duedate date default sysdate,
-CONSTRAINT user_tnum FOREIGN key(user_num) REFERENCES userinfo(user_num),
-CONSTRAINT card1 FOREIGN key(card1) REFERENCES card1(pull_num),
-CONSTRAINT card2 FOREIGN key(card2) REFERENCES card2(pull_num),
-CONSTRAINT card3 FOREIGN key(card3) REFERENCES card3(pull_num));
+CONSTRAINT user_num FOREIGN key(user_num) REFERENCES userinfo(user_num),
+CONSTRAINT pnum FOREIGN key(pnum) REFERENCES pull_card(pnum));

@@ -1,12 +1,8 @@
 INSERT INTO userinfo VALUES ('이용자','11111',45,'01099992222');
 
 INSERT INTO one_spread VALUES(osq.nextval,43,'해석 예제',default,'11111');
+Insert into pull_card values(psq.nextval,'major',20,'minor',45,'major',42);
 
 
-INSERT into card1 values(1,'major',22,null);
 
-INSERT into card2 values(1,'minor',null,9);
-
-INSERT into card3 values(1,'major',32,null);
-
-INSERT INTO three_spread values(tsq.nextval,'11111',1,1,1,'인과','해석 예제',default);
+INSERT INTO three_spread values(tsq.nextval,'11111',1,'인과','해석 예제',default);

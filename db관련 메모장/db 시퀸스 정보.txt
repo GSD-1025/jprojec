@@ -19,3 +19,8 @@ create SEQUENCE tsq
 INCREMENT by 1
 START with 1
 nocycle;
+
+create SEQUENCE psq
+INCREMENT by 1
+START with 1
+nocycle;
