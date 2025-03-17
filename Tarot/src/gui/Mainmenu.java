@@ -8,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -18,7 +20,7 @@ import javax.swing.JPanel;
 
 import main.Load;
 
-public class Mainmenu extends JFrame implements ActionListener {
+public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 	private Load load=Load.getInstance();
 	private Image back=new ImageIcon("D:\\그림\\배경.jpg").getImage();
 	private String mt="Main Title";
@@ -52,6 +54,13 @@ public class Mainmenu extends JFrame implements ActionListener {
 		bk.add("Center",mp);
 		btn();
 		this.setVisible(true);
+		JButton a=new JButton();// 마우스 포인터
+		a.addMouseListener(this);
+		a.setOpaque(false);
+		this.add(a);
+		a.setBounds(0, 0, 100, 100);
+		
+		
 	}
 	
 	private void btn() {
@@ -87,8 +96,8 @@ public class Mainmenu extends JFrame implements ActionListener {
 			String ranimgpath=null;
 			Random r=new Random();
 			int r1=r.nextInt(2)+1;
-			int r2=r.nextInt(22)+1;
-			int r3=r.nextInt(56)+1;
+			int r2=r.nextInt(22);
+			int r3=r.nextInt(56);
 			if(r1==1) {
 				ranimgpath=load.getimagepath(1, r2);
 			}else if(r1==2) {
@@ -103,6 +112,38 @@ public class Mainmenu extends JFrame implements ActionListener {
 	public static Image getRanimg() {
 		return ranimg;
 	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println(e.getX()+" "+e.getY());
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 	
 

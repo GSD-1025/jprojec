@@ -2,6 +2,8 @@ package main;
 
 import java.util.ArrayList;
 
+import card.DrawcDAO;
+import card.DrawcDTO;
 import card.MajorDAO;
 import card.MajorDTO;
 import card.MinorDAO;
@@ -18,9 +20,10 @@ public class Load {
 	private static Load load=null;
 	private ArrayList<MajorDTO> major= new ArrayList<>();
 	private ArrayList<MinorDTO> minor=new ArrayList<>();
-	private ArrayList<UserDTO> ulist=new ArrayList<UserDTO>();
+	private ArrayList<UserDTO> ulist=userLoad();
 	private ArrayList<OneDTO> olist=new ArrayList<OneDTO>();
 	private ArrayList<ThreeDTO> tlist=new ArrayList<ThreeDTO>();
+	private ArrayList<DrawcDTO> dlist=new ArrayList<DrawcDTO>();
 	
 	
 	public static Load getInstance() {
@@ -35,8 +38,15 @@ public class Load {
 		cardLoad();
 		userLoad();
 		spreadLoad();
+		drawload();
+		check();
 	}
 	
+	private void drawload() {
+		DrawcDAO d=new DrawcDAO();
+		dlist=d.drawload();
+	}
+
 	private void spreadLoad() {
 		OneDAO o= new OneDAO();
 		olist=o.loadOne();
@@ -44,9 +54,10 @@ public class Load {
 		tlist=t.loadThree();
 	}
 
-	private void userLoad() {
+	public ArrayList<UserDTO> userLoad() {
 		UserDAO u= new UserDAO();
 		ulist=u.loadUser();
+		return ulist;
 	}
 	
 	private void cardLoad() {
@@ -74,23 +85,65 @@ public class Load {
 		return mi;
 	}
 	
+	public int listsize(int i) {
+		if(i==1) {
+			return ulist.size();
+		}else if(i==2) {
+			return olist.size();
+		}else if(i==3) {
+			return tlist.size();
+		}
+		return 0;
+	}
+	
+	public String getcard(int j) {
+		return major.get(j).getName();
+		
+	}
+	
+	public String threecard(int i) {
+		String cardsum="";
+		if(dlist.get(i).getCard1()!=0) {
+			cardsum+=major.get(dlist.get(i).getCard1()-1).getName()+major.get(dlist.get(i).getCard1()-1).getWay()+" ";
+		}else if(dlist.get(i).getCard4()!=0) {
+			cardsum+=minor.get(dlist.get(i).getCard4()-1).getSuits()+minor.get(dlist.get(i).getCard4()-1).getCardnum()+" ";
+		}
+		if(dlist.get(i).getCard2()!=0) {
+			cardsum+=major.get(dlist.get(i).getCard2()-1).getName()+major.get(dlist.get(i).getCard2()-1).getWay()+" ";
+		}else if(dlist.get(i).getCard5()!=0) {
+			cardsum+=minor.get(dlist.get(i).getCard5()-1).getSuits()+minor.get(dlist.get(i).getCard5()-1).getCardnum()+" ";
+		}
+		if(dlist.get(i).getCard3()!=0) {
+			cardsum+=major.get(dlist.get(i).getCard3()-1).getName()+major.get(dlist.get(i).getCard3()-1).getWay()+" ";
+		}else if(dlist.get(i).getCard6()!=0) {
+			cardsum+=minor.get(dlist.get(i).getCard6()-1).getSuits()+minor.get(dlist.get(i).getCard6()-1).getCardnum()+" ";
+		}
+		return cardsum;
+	}
+	
+	
+	
+	
 	
 	public void check() { //과정 확인용
-		for(MajorDTO m: major) {
-			m.prt();
-		}
-		for(MinorDTO m: minor) {
-			m.prt();
-		}
-		for(UserDTO u: ulist) {
-			u.prt();
-		}
-		for(OneDTO o: olist) {
-			o.prt();
-		}
-		for(ThreeDTO t: tlist) {
-			t.prt();
-		}
+		//for(MajorDTO m: major) {
+			//m.prt();
+		//}
+		//for(MinorDTO m: minor) {
+			//m.prt();
+		//}
+		//for(UserDTO u: ulist) {
+			//u.prt();
+		//}
+		//for(OneDTO o: olist) {
+			//o.prt();
+		//}
+		//for(ThreeDTO t: tlist) {
+			//t.prt();
+		//}
+		//for(DrawcDTO d:dlist) {
+			//d.prt();
+		//}
 	}
 
 }

@@ -18,6 +18,9 @@ public class MinorDAO extends BasicDAO{
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(sq1);
 			while(rs.next()) {
+				if(rs.getString("card_num").equals("0000")) {
+					rs.next();
+				}
 				MinorDTO c=new MinorDTO();
 				c.setCardnum(rs.getString("card_num"));
 				c.setSuits(rs.getString("suits"));

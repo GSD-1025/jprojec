@@ -1,71 +1,91 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
+import main.Load;
+import spread.OneDAO;
+import spread.OneDTO;
+import spread.ThreeDAO;
+import spread.ThreeDTO;
 import user.UserDAO;
 import user.UserDTO;
 
 public class Userp extends JPanel implements ActionListener{
 	
+	
+	private Load load=Load.getInstance();
+	private CardLayout card;
+	private JPanel temp2;
 	private JPanel newuser;
 	private JPanel userlist;
 	private JPanel deco;
 	private JPanel itplist;
-	private GridBagConstraints gcon=new GridBagConstraints();
-	private GridBagLayout g;
 	private Font f=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,20);
 	private JButton btn1;
+	private JButton btn2;
 	private JTextField nbox= new JTextField(20);
 	private JTextField agbox= new JTextField(20);
 	private JTextField phbox= new JTextField(20);
+	private JTable jt1;
+	private JTable jt2;
+	private JTable jt3;
+	private Color brown=new Color(88,64,52);
+
+
 	
 	public JPanel panel() {
-		g=new GridBagLayout();
-		JPanel panel=new JPanel(g);
-		gcon.weightx=1;
-		gcon.weighty=1;
-		gcon.fill=GridBagConstraints.BOTH;
+		JPanel panel=new JPanel(null);
 		panel.setOpaque(false);
 		panel.setBorder(new TitledBorder(new LineBorder(Color.BLACK,7)));
-		newuser=settingnlp();
-		constraint(newuser,0,0,1,1,0.15,0.23);
+		newuser=settingnup();
+		newuser.setBounds(7, 3, 300, 290);
 		panel.add(newuser);
 		userlist=settingulp();
-		constraint(userlist,1,0,1,1,0.85,0.23);
+		userlist.setBounds(307, 3, 445, 200);
 		panel.add(userlist);
 		deco=settingdeco();
-		constraint(deco,0,1,1,1,0,0.77);
+		deco.setBounds(7, 293, 298, 394);
 		panel.add(deco);
 		itplist=settingilp();
-		constraint(itplist,1,1,1,1,1,0.77);
+		itplist.setBounds(307,204,900,483);
 		panel.add(itplist);
+		card=(CardLayout) temp2.getLayout();
+		btn2=new JButton("One/Three");
+		btn2.setFont(f);
+		btn2.setBackground(brown);
+		btn2.setBounds(753, 3, 150, 200);
+		btn2.addActionListener(this);
+		panel.add(btn2);
 		return panel;
 	}
 	
-	private JPanel settingnlp() {
+	private JPanel settingnup() {
 		JPanel temp=new JPanel();
 		temp.setBorder(new TitledBorder(new LineBorder(Color.BLACK,1)));
 		temp.setLayout(new BorderLayout());
 		temp.setOpaque(false);
-		JLabel lb1=new JLabel("이용자 등록");
+		JLabel lb1=new JLabel("이용자 등록/삭제");
 		lb1.setHorizontalAlignment(JLabel.LEFT);
 		lb1.setFont(f);
 		lb1.setForeground(Color.BLACK);
@@ -75,8 +95,7 @@ public class Userp extends JPanel implements ActionListener{
 		btn1.addActionListener(this);
 		temp.add("South",btn1);
 		return temp;
-	}
-	
+	}	
 	private JPanel uinsert() {
 		JPanel temp=new JPanel(new GridLayout(6,1));
 		temp.setOpaque(false);
@@ -108,14 +127,39 @@ public class Userp extends JPanel implements ActionListener{
 		lb1.setFont(f);
 		lb1.setForeground(Color.BLACK);
 		temp.add("North",lb1);
+		temp.add("West",ulinsert());
 		return temp;
 	}
+	private JScrollPane ulinsert() {
+		ArrayList<UserDTO> u=load.userLoad();
+		String[] header= {"이름","회원번호","나이","전화번호","이용횟수"};
+		String[][] contents= new String[u.size()][5];
+		for(int i=0; i<u.size(); i++) {
+			contents[i][0]=u.get(i).getName();
+			contents[i][1]=u.get(i).getUnum();
+			contents[i][2]=String.valueOf(u.get(i).getAge());
+			contents[i][3]=u.get(i).getPhone();
+			contents[i][4]=String.valueOf(u.get(i).getCnt());
+		}
+		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
+			public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+            }
+		};
+		jt1= new JTable(defaultmodel);
+		jt1.setFont(new Font(Font.SERIF,Font.ITALIC,12));
+		JScrollPane stemp=new JScrollPane(jt1);
+		stemp.setPreferredSize(new Dimension(440,200));
+		return stemp;
+	}
+	
+	
 	private JPanel settingdeco() {
 		JPanel temp=new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
 				Image backimage=Mainmenu.getRanimg();
-				g.drawImage(backimage, 0, 0, 335, 420, null);
+				g.drawImage(backimage, 0, 0, 300, 400, null);
 				setOpaque(false);
 				super.paintComponent(g);
 			}
@@ -127,18 +171,85 @@ public class Userp extends JPanel implements ActionListener{
 		JPanel temp=new JPanel();
 		temp.setBorder(new TitledBorder(new LineBorder(Color.BLACK,1)));
 		temp.setOpaque(false);
+		temp.setLayout(new BorderLayout());
+		JLabel lb1=new JLabel("해석 결과");
+		lb1.setHorizontalAlignment(JLabel.LEFT);
+		lb1.setFont(f);
+		lb1.setForeground(Color.BLACK);
+		temp.add("North",lb1);
+		temp2=new JPanel(new CardLayout());
+		JPanel ttemp1=new JPanel(new BorderLayout());
+		JPanel ttemp2=new JPanel(new BorderLayout());
+		temp2.setOpaque(false);
+		temp.add("West",temp2);
+		Font f2=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,15);
+		JLabel t1=new JLabel("원 스프레드");
+		t1.setFont(f2);
+		t1.setForeground(Color.BLACK);
+		JLabel t2=new JLabel("쓰리 스프레드");
+		t2.setFont(f2);
+		t2.setForeground(Color.BLACK);
+		JScrollPane js1=oneinsert();
+		JScrollPane js2=threeinsert();
+		ttemp1.add("North",t1);
+		ttemp1.add("West",js1);
+		ttemp1.setOpaque(false);
+		temp2.add(ttemp1,"P1");
+		ttemp2.add("North",t2);
+		ttemp2.add("West",js2);
+		ttemp2.setOpaque(false);
+		temp2.add(ttemp2,"P2");
 		return temp;
 	}
-
-	private void constraint(Component c, int x, int y, int w, int h, double wx, double wy) {
-		gcon.gridx=x;
-		gcon.gridy=y;
-		gcon.gridheight=w;
-		gcon.gridheight=h;
-		gcon.weightx=wx;
-		gcon.weighty=wy;
-		g.setConstraints(c, gcon);
+	private JScrollPane oneinsert() {
+		String[] header= {"카드","해석 결과","날짜"};
+		String[][] contents= new String[load.listsize(2)][3];
+		OneDAO o= new OneDAO();
+		ArrayList<OneDTO> olist=o.loadOne();
+		for(int i=0; i<olist.size(); i++) {
+			contents[i][0]=load.getcard(olist.get(i).getMnum());
+			contents[i][1]=olist.get(i).getInterpret();
+			contents[i][2]=olist.get(i).getDuedate();
+		}
+		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
+			public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+            }
+		};
+		jt2= new JTable(defaultmodel);
+		jt2.setFont(new Font(Font.SERIF,Font.ITALIC,12));
+		jt2.getColumn("해석 결과").setPreferredWidth(440);
+		jt2.getColumn("날짜").setPreferredWidth(40);
+		JScrollPane stemp=new JScrollPane(jt2);
+		stemp.setPreferredSize(new Dimension(875,100));
+		return stemp;
+	}	
+	private JScrollPane threeinsert() {	
+		String[] header= {"카드","해석 결과","날짜"};
+		String[][] contents= new String[load.listsize(3)][3];
+		ThreeDAO t=new ThreeDAO();
+		ArrayList<ThreeDTO> tlist=t.loadThree();
+		for(int i=0; i<tlist.size(); i++) {
+			contents[i][0]=load.threecard(i);
+			contents[i][1]=tlist.get(i).getInterway()+": "+tlist.get(i).getInterpret();
+			contents[i][2]=tlist.get(i).getDuedate();
+		}
+		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
+			public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+            }
+		};
+		jt3= new JTable(defaultmodel);
+		jt3.setFont(new Font(Font.SERIF,Font.ITALIC,12));
+		jt3.getColumn("카드").setPreferredWidth(175);
+		jt3.getColumn("해석 결과").setPreferredWidth(405);
+		jt3.getColumn("날짜").setPreferredWidth(15);
+		JScrollPane stemp=new JScrollPane(jt3);
+		stemp.setPreferredSize(new Dimension(875,100));
+		return stemp;
 	}
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -153,18 +264,31 @@ public class Userp extends JPanel implements ActionListener{
 			for(int i=0; i<9;i++) {
 				rnum+=String.valueOf(r.nextInt(10));
 			}
-			System.out.println(u.getAge()+" "+u.getName()+" "+u.getPhone()+" "+u.getUnum());
 			u.setAge(age);
 			u.setName(name);
 			u.setPhone(phone);
 			u.setUnum(rnum);
-			System.out.println(u.getAge()+" "+u.getName()+" "+u.getPhone()+" "+u.getUnum());
 			udao.insert(u);
+			addulist(u);
 			nbox.setText("");
 			agbox.setText("");
 			phbox.setText("");
+			
+		}else if(e.getSource()==btn2) {
+			card.next(temp2);
 		}
 		
 	}
 
+	
+	public void addulist(UserDTO u) {
+		DefaultTableModel model=(DefaultTableModel)jt1.getModel();
+		String[] record=new String[5];
+		record[0]=u.getName();
+		record[1]=u.getUnum();
+		record[2]=String.valueOf(u.getAge());
+		record[3]=u.getPhone();
+		record[4]=String.valueOf(0);
+		model.addRow(record);
+	}
 }

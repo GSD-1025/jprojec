@@ -19,6 +19,9 @@ public class MajorDAO extends BasicDAO{
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(sq1);
 			while(rs.next()) {
+				if(rs.getString("card_num").equals("0000")) {
+					rs.next();
+				}
 				MajorDTO c= new MajorDTO();
 				c.setCardnum(rs.getString("card_num"));
 				c.setName(rs.getString("name"));
@@ -39,6 +42,7 @@ public class MajorDAO extends BasicDAO{
 				e2.printStackTrace();
 			}
 		}
+		mlist.remove("0000");
 		return mlist;
 	}
 		

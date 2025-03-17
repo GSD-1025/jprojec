@@ -1,11 +1,15 @@
 package gui;
 
 import java.awt.CardLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Mpanel extends JPanel{
-
+	static JButton a;
+	
 	
 	public static JPanel panel() {
 		JPanel panel = new JPanel();
@@ -21,10 +25,10 @@ public class Mpanel extends JPanel{
 		panel.add(user.panel(),"Panel3");
 		Spreadp spread=new Spreadp();
 		panel.add(spread.panel(),"Panel4");
-		return	panel;		
+		return panel;
 	}
 	
 	
-	
-	
 }
+
+	

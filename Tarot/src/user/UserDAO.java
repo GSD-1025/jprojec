@@ -49,7 +49,7 @@ public class UserDAO extends BasicDAO{
 		Connection conn=null;
 		try {
 			conn=getConnection();
-			String sq1="insert into userinfo values(?,?,?,?)";
+			String sq1="insert into userinfo values(?,?,?,?,default)";
 			psmt=conn.prepareStatement(sq1);
 			psmt.setString(1, u.getName());
 			psmt.setString(2, u.getUnum());

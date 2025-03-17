@@ -23,9 +23,6 @@ public class ThreeDAO extends BasicDAO{
 				ThreeDTO t=new ThreeDTO();
 				t.setResnum(rs.getInt("res_num"));
 				t.setUnum(rs.getString("user_num"));
-				t.setCard1(rs.getInt("card1"));
-				t.setCard2(rs.getInt("card2"));
-				t.setCard3(rs.getInt("card3"));
 				t.setInterway(rs.getString("interpret_way"));
 				t.setInterpret(rs.getString("interpret"));
 				t.setDuedate(rs.getString("duedate"));
