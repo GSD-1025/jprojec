@@ -39,7 +39,9 @@ public class Userp extends JPanel implements ActionListener{
 	private OneDAO o=new OneDAO();
 	private ThreeDAO t=new ThreeDAO();
 	private CardLayout card;
+	private JLabel ujl;
 	private JPanel temp2;
+	private JPanel ttemp3;
 	private JPanel newuser;
 	private JPanel userlist;
 	private JPanel deco;
@@ -48,12 +50,16 @@ public class Userp extends JPanel implements ActionListener{
 	private JButton btn1;
 	private JButton btn2;
 	private JButton btn3;
+	private JButton btn4;
+	private JButton btn5;
 	private JTextField nbox= new JTextField(20);
 	private JTextField agbox= new JTextField(20);
 	private JTextField phbox= new JTextField(20);
 	private JTable jt1;
 	private JTable jt2;
 	private JTable jt3;
+	private JTable jt4;
+	private JScrollPane ujs;
 	private Color brown=new Color(88,64,52);
 	
 
@@ -73,15 +79,27 @@ public class Userp extends JPanel implements ActionListener{
 		deco.setBounds(7, 293, 298, 394);
 		panel.add(deco);
 		itplist=settingilp();
-		itplist.setBounds(307,204,900,483);
+		itplist.setBounds(307,204,900,383);
 		panel.add(itplist);
 		card=(CardLayout) temp2.getLayout();
-		btn3=new JButton("One/Three");
+		btn3=new JButton("One");
 		btn3.setFont(f);
 		btn3.setBackground(brown);
-		btn3.setBounds(753, 3, 150, 200);
+		btn3.setBounds(750, 7, 140, 199);
 		btn3.addActionListener(this);
+		btn4=new JButton("Three");
+		btn4.setFont(f);
+		btn4.setBackground(brown);
+		btn4.setBounds(890, 7, 140, 199);
+		btn4.addActionListener(this);
+		btn5=new JButton("Search");
+		btn5.setFont(f);
+		btn5.setBackground(brown);
+		btn5.setBounds(1030,7, 152, 199);
+		btn5.addActionListener(this);
 		panel.add(btn3);
+		panel.add(btn4);
+		panel.add(btn5);
 		return panel;
 	}
 	
@@ -115,7 +133,7 @@ public class Userp extends JPanel implements ActionListener{
 		JLabel age=new JLabel("나이");
 		age.setForeground(Color.BLACK);
 		age.setHorizontalAlignment(JLabel.LEFT);
-		JLabel ph=new JLabel("등록: 핸드폰(- 제외)/ 삭제: 회원번호");
+		JLabel ph=new JLabel("등록: 핸드폰(- 제외)/ 검색, 삭제: 회원번호");
 		ph.setForeground(Color.BLACK);
 		ph.setHorizontalAlignment(JLabel.LEFT);
 		temp.add(name);
@@ -190,6 +208,7 @@ public class Userp extends JPanel implements ActionListener{
 		temp2=new JPanel(new CardLayout());
 		JPanel ttemp1=new JPanel(new BorderLayout());
 		JPanel ttemp2=new JPanel(new BorderLayout());
+		ttemp3=new JPanel(new BorderLayout());
 		temp2.setOpaque(false);
 		temp.add("West",temp2);
 		Font f2=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,15);
@@ -199,8 +218,12 @@ public class Userp extends JPanel implements ActionListener{
 		JLabel t2=new JLabel("쓰리 스프레드");
 		t2.setFont(f2);
 		t2.setForeground(Color.BLACK);
+		ujl= new JLabel("대상 없음");
+		ujl.setFont(f2);
+		ujl.setForeground(Color.BLACK);
 		JScrollPane js1=oneinsert();
 		JScrollPane js2=threeinsert();
+		ujs=specific("0000");
 		ttemp1.add("North",t1);
 		ttemp1.add("West",js1);
 		ttemp1.setOpaque(false);
@@ -209,6 +232,10 @@ public class Userp extends JPanel implements ActionListener{
 		ttemp2.add("West",js2);
 		ttemp2.setOpaque(false);
 		temp2.add(ttemp2,"P2");
+		ttemp3.add("North",ujl);
+		ttemp3.add("West",ujs);
+		ttemp3.setOpaque(false);
+		temp2.add(ttemp3,"P3");
 		return temp;
 	}
 	private JScrollPane oneinsert() {
@@ -257,7 +284,45 @@ public class Userp extends JPanel implements ActionListener{
 		stemp.setPreferredSize(new Dimension(875,100));
 		return stemp;
 	}
-	
+	private JScrollPane specific(String unum) {
+		ArrayList<OneDTO> olist=o.loadOne();
+		ArrayList<ThreeDTO> tlist=t.loadThree();
+		String[] header= {"카드","해석 결과","회원번호"};
+		String[][] contents= new String[olist.size()+tlist.size()][3];
+		for(int i=0; i<olist.size(); i++) {
+			if(olist.get(i).getUnum().equals(unum)) {
+				contents[i][0]=load.getcard(olist.get(i).getMnum());
+				contents[i][1]=olist.get(i).getInterpret();
+				contents[i][2]=olist.get(i).getUnum();
+			}
+		}
+		for(int i=0; i<tlist.size(); i++) {
+			if(tlist.get(i).getUnum().equals(unum)) {
+				contents[i+olist.size()][0]=load.threecard(i);
+				contents[i+olist.size()][1]=tlist.get(i).getInterway()+": "+tlist.get(i).getInterpret();
+				contents[i+olist.size()][2]=tlist.get(i).getUnum();
+			}
+		}
+		DefaultTableModel model = new DefaultTableModel(contents, header) {
+			public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+            }
+		};
+		for(int i=0; i<model.getRowCount(); i++) {
+			if(model.getValueAt(i, 2)==null) {
+				model.removeRow(i);
+				i--;
+			}
+		}
+		jt4=new JTable(model);
+		jt4.setFont(new Font(Font.SERIF,Font.ITALIC,12));
+		jt4.getColumn("카드").setPreferredWidth(160);
+		jt4.getColumn("해석 결과").setPreferredWidth(435);
+		jt4.getColumn("회원번호").setPreferredWidth(10);
+		JScrollPane stemp=new JScrollPane(jt4);
+		stemp.setPreferredSize(new Dimension(875,100));
+		return stemp;
+	}
 	
 
 	@Override
@@ -315,7 +380,22 @@ public class Userp extends JPanel implements ActionListener{
 			agbox.setText("");
 			phbox.setText("");
 		}else if(e.getSource()==btn3) {
-			card.next(temp2);
+			card.show(temp2, "P1");
+		}else if(e.getSource()==btn4) {
+			card.show(temp2,"P2");
+		}else if(e.getSource()==btn5) {
+			String unum=phbox.getText();
+			if(unum.equals("")) {
+				ttemp3.remove(ujs);
+				unum="대상 없음";
+			}else {
+				ttemp3.remove(ujs);
+				ujs=specific(unum);
+				ttemp3.add("West",ujs);
+			}
+			ujl.setText(unum);
+			card.show(temp2, "P3");
+			phbox.setText(null);
 		}
 		
 	}

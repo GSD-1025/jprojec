@@ -95,12 +95,13 @@ public class Cardp extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			for(int i=0; i<22; i++) {
 				if(e.getSource()==mjb[i]) {
-					MajorDTO mj=load.getmajor(i);
+					MajorDTO mj=load.getmajor(2*i);
+					MajorDTO mj2=load.getmajor(2*i+1);
 					JDialog d=new JDialog();
 					d.setLayout(new BorderLayout());
 					d.setTitle(mj.getName());
-					d.setBounds(400, 200, 372, 560);
-					JLabel mean=new JLabel(mj.getMean());
+					d.setBounds(400, 200, 502, 560);
+					JLabel mean=new JLabel("정: "+mj.getMean()+"/역: "+mj2.getMean());
 					mean.setFont(f);
 					Image img=new ImageIcon(mj.getImagepath()).getImage().getScaledInstance(372, 500, Image.SCALE_FAST);
 					ImageIcon simg=new ImageIcon(img);

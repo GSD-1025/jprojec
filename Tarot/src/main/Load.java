@@ -77,7 +77,7 @@ public class Load {
 	}
 	
 	public MajorDTO getmajor(int i) {
-		MajorDTO mj=major.get(2*i);
+		MajorDTO mj=major.get(i);
 		return mj;
 	}
 	public MinorDTO getminor(int i) {
