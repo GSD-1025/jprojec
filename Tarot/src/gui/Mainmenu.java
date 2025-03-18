@@ -22,14 +22,17 @@ import main.Load;
 
 public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 	private Load load=Load.getInstance();
+	private Spreadp spreadp=new Spreadp();
 	private Image back=new ImageIcon("D:\\그림\\배경.jpg").getImage();
 	private String mt="Main Title";
 	private Font f=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,70);
 	private JPanel mp=Mpanel.panel();
+	private JPanel sp=spreadp.panel();
 	private JButton btn1=new JButton("카드 정보");
 	private JButton btn2=new JButton("이용자  정보");
 	private JButton btn3=new JButton("카드  펼치기");
-	private CardLayout cl = (CardLayout) mp.getLayout();	
+	private CardLayout cl = (CardLayout) mp.getLayout();
+	private CardLayout cp = (CardLayout) sp.getLayout();
 	private static Image ranimg;
 	
 
@@ -105,7 +108,8 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 			}
 			ranimg=new ImageIcon(ranimgpath).getImage();
 		}else if(e.getSource()==btn3) {
-			cl.show(mp,"Panel4");	
+			cl.show(mp,"Panel4");
+			cp.show(sp, "p1");
 		}
 	}
 
