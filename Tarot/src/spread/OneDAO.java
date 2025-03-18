@@ -74,4 +74,25 @@ public class OneDAO extends BasicDAO{
 			}
 		}
 	}
+
+	public void delete(String unum) {
+		PreparedStatement psmt=null;
+		Connection conn=null;
+		try {
+			conn=getConnection();
+			String sq1="delete from one_spread where user_num=?";
+			psmt=conn.prepareStatement(sq1);
+			psmt.setString(1, unum);
+			psmt.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			try {
+				psmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 }

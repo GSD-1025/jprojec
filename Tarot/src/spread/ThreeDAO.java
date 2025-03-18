@@ -1,6 +1,7 @@
 package spread;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -42,4 +43,24 @@ public class ThreeDAO extends BasicDAO{
 		return tlist;
 	}
 	
+	public void delete(String unum) {
+		PreparedStatement psmt=null;
+		Connection conn=null;
+		try {
+			conn=getConnection();
+			String sq1="delete from Three_spread where user_num=?";
+			psmt=conn.prepareStatement(sq1);
+			psmt.setString(1, unum);
+			psmt.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			try {
+				psmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 }

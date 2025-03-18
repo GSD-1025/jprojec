@@ -85,16 +85,6 @@ public class Load {
 		return mi;
 	}
 	
-	public int listsize(int i) {
-		if(i==1) {
-			return ulist.size();
-		}else if(i==2) {
-			return olist.size();
-		}else if(i==3) {
-			return tlist.size();
-		}
-		return 0;
-	}
 	
 	public String getcard(int j) {
 		return major.get(j).getName();
