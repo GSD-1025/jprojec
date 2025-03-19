@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,8 +33,6 @@ import user.UserDAO;
 import user.UserDTO;
 
 public class Userp extends JPanel implements ActionListener{
-	
-	
 	private Load load=Load.getInstance();
 	private UserDAO udao=new UserDAO();
 	private OneDAO o=new OneDAO();
@@ -402,13 +401,13 @@ public class Userp extends JPanel implements ActionListener{
 
 	public void addulist(UserDTO u) {
 		DefaultTableModel model=(DefaultTableModel)jt1.getModel();
-		String[] record=new String[5];
-		record[0]=u.getName();
-		record[1]=u.getUnum();
-		record[2]=String.valueOf(u.getAge());
-		record[3]=u.getPhone();
-		record[4]=String.valueOf(0);
-		model.addRow(record);
+		String[] record1=new String[5];
+		record1[0]=u.getName();
+		record1[1]=u.getUnum();
+		record1[2]=String.valueOf(u.getAge());
+		record1[3]=u.getPhone();
+		record1[4]=String.valueOf(0);
+		model.addRow(record1);
 	}
 	
 	public void deletelist(int index, int i) {

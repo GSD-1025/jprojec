@@ -23,7 +23,7 @@ public class Mpanel extends JPanel{
 		panel.add(card.panel(),"Panel2");
 		Userp user=new Userp();
 		panel.add(user.panel(),"Panel3");
-		Spreadp spread=new Spreadp();
+		Spreadp spread=Spreadp.getInstance();
 		panel.add(spread.panel(),"Panel4");
 		return panel;
 	}

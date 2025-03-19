@@ -100,7 +100,7 @@ public class Cardp extends JPanel{
 					JDialog d=new JDialog();
 					d.setLayout(new BorderLayout());
 					d.setTitle(mj.getName());
-					d.setBounds(400, 200, 502, 560);
+					d.setBounds(400, 200, 518, 560);
 					JLabel mean=new JLabel("정: "+mj.getMean()+"/역: "+mj2.getMean());
 					mean.setFont(f);
 					Image img=new ImageIcon(mj.getImagepath()).getImage().getScaledInstance(372, 500, Image.SCALE_FAST);

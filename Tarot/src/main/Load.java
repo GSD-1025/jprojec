@@ -31,7 +31,6 @@ public class Load {
 			load=new Load();
 		}
 		return load; 
-		
 	}
 	
 	private Load() {
@@ -85,7 +84,6 @@ public class Load {
 		return mi;
 	}
 	
-	
 	public String getcard(int j) {
 		return major.get(j).getName();
 		
@@ -111,7 +109,19 @@ public class Load {
 		return cardsum;
 	}
 	
-	
+	public String[] getuserlsit(){
+		ArrayList<String> list=new ArrayList<>();
+		for(UserDTO u: userLoad()) {
+			list.add(u.getName()+" "
+					+ ""
+					+ ""+u.getUnum());
+		}
+		String[] ulist=new String[list.size()];
+		for(int i=0; i<ulist.length; i++) {
+			ulist[i]=list.get(i);
+		}
+		return ulist;
+	}
 	
 	
 	
