@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,18 +19,22 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import javax.swing.border.LineBorder;
 
+import card.MajorDTO;
 import main.Load;
+import spread.OneDAO;
+import spread.OneDTO;
+import spread.ThreeDTO;
 
 public class Spreadp extends JPanel implements ActionListener{
 	
 	
 	private static Spreadp sp=null;
+	private Random ran=new Random();
 	private Load load=Load.getInstance();
 	private CardLayout card;
-	private JDialog urd;
 	private JPanel mpanel;
 	private JPanel jp1;
 	private JPanel jp2;
@@ -38,12 +43,21 @@ public class Spreadp extends JPanel implements ActionListener{
 	private JButton btn1;
 	private JButton btn2;
 	private JButton btn3;
+	private JButton btn4;
+	private JButton btn5;
+	private JButton btn6;
 	private JList<String> ul;
 	private JLabel cdptitle1;
 	private JLabel cdptitle2;
+	private JLabel ocard;
+	private JLabel oct;
+	private JTextField oinp;
 	private Font f=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,80);
+	private Font f2=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,15);
+	private Color brown=new Color(88,64,52);
 	private String user;
-	
+	private OneDTO ores=new OneDTO();
+	private ThreeDTO tres=new ThreeDTO();
 	
 	private Spreadp() {
 		
@@ -106,38 +120,67 @@ public class Spreadp extends JPanel implements ActionListener{
 	public JPanel oneP() {
 		JPanel panel=new JPanel(null);
 		panel.setOpaque(false);
-		cdptitle1=settitle();
-		cdptitle1.setBounds(50, 0, 400, 50);
+		cdptitle1=title();
+		cdptitle1.setBounds(60, 0, 350, 50);
+		btn4=new JButton("카드 뽑기");
+		btn4.setBackground(brown);
+		btn4.setFont(f2);
+		btn4.setBorderPainted(false);
+		btn4.setBounds(65, 55, 120, 40);
+		btn4.addActionListener(this);
+		btn6=new JButton("해석 결과");
+		btn6.setBackground(brown);
+		btn6.setFont(f2);
+		btn6.setBorderPainted(false);
+		btn6.setBounds(230, 562, 120, 40);
+		btn6.addActionListener(this);
+		ocard=new JLabel(cardimage("D:\\그림\\1카드.jpg"));
+		ocard.setBounds(480, 117, 250, 410);
+		oct=cardtitle();
+		oct.setBounds(540, 70, 250, 50);
+		oinp=new JTextField();
+		oinp.setBounds(360, 567, 500, 30);
 		panel.add(cdptitle1);
+		panel.add(btn4);
+		panel.add(ocard);
+		panel.add(oct);
+		panel.add(btn6);
+		panel.add(oinp);
 		return panel;
 	}
 	
 	public JPanel threeP() {
 		JPanel panel=new JPanel(null);
 		panel.setOpaque(false);
-		cdptitle2=settitle();
-		cdptitle2.setBounds(50, 0, 400, 50);
+		cdptitle2=title();
+		cdptitle2.setBounds(60, 0, 350, 50);
+		btn5=new JButton("카드 뽑기");
+		btn5.setBackground(brown);
+		btn5.setFont(f2);
+		btn5.setBorderPainted(false);
+		btn5.setBounds(65, 55, 140, 40);
 		panel.add(cdptitle2);
+		panel.add(btn5);
 		return panel;
 	}
 	
-	public JDialog uresist() {
+	public void uresist() {
 		d=new JDialog();
 		d.setTitle("");
 		d.setResizable(false);
 		d.setLayout(new BorderLayout());
-		d.setBounds(500, 335, 300, 150);
-		d.getContentPane().setBackground(new Color(88,64,52));
+		d.setBounds(480, 335, 300, 150);
+		d.getContentPane().setBackground(brown);
 		JLabel lb1=new JLabel("카드 대상 등록",JLabel.LEFT);
 		lb1.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,16));
 		lb1.setForeground(Color.BLACK);
 		JPanel temp1=new JPanel(new FlowLayout(FlowLayout.LEFT));
-		temp1.setBackground(new Color(88,64,52));
+		temp1.setBackground(brown);
 		JLabel lb2=new JLabel("이름 회원번호  ",JLabel.LEFT);
 		lb2.setFont(new Font(Font.SERIF,Font.ITALIC,12));
 		lb2.setForeground(Color.BLACK);
 		btn3=new JButton("OK");
-		btn3.setBackground(new Color(88,64,52));
+		btn3.setBackground(brown);
 		btn3.addActionListener(this);
 		ul=new JList(load.getuserlsit());
 		ul.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -149,7 +192,6 @@ public class Spreadp extends JPanel implements ActionListener{
 		d.add("East", btn3);
 		d.add("Center",temp1);
 		d.setVisible(true);
-		return null;
 	}
 	
 	
@@ -158,32 +200,66 @@ public class Spreadp extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btn1) {
-			System.out.println("실행");
 			cdptitle1.setText("");
+			cdptitle1.setVisible(false);
 			cdptitle2.setText("");
-			urd=uresist();
+			cdptitle2.setVisible(false);
+			oct.setVisible(false);
+			uresist();
 			card.show(mpanel,"p2");
 		}else if(e.getSource()==btn2) {
-			System.out.println("실행");
 			cdptitle1.setText("");
+			cdptitle1.setVisible(false);
 			cdptitle2.setText("");
-			urd=uresist();
+			cdptitle2.setVisible(false);
+			oct.setVisible(false);
+			uresist();
 			card.show(mpanel,"p3");
 		}else if(e.getSource()==btn3) {
 			user=ul.getSelectedValue();
-			System.out.println(user);
+			String[] s=user.split(" ");
+			ores.setUnum(s[1]);
 			cdptitle1.setText(user);
+			cdptitle1.setVisible(true);
 			cdptitle2.setText(user);
+			cdptitle2.setVisible(true);
 			d.dispose();
+		}else if(e.getSource()==btn4) {
+			int r=ran.nextInt(44);
+			MajorDTO mj=load.getmajor(r);
+			ores.setMnum(mj.getMajornum());
+			String imgpath=mj.getImagepath();
+			oct.setText(mj.getName()+"-"+mj.getWay());
+			oct.setVisible(true);
+			ocard.setIcon(cardimage(imgpath));
+		}else if(e.getSource()==btn6) {
+			ores.setInterpret(oinp.getText());
+			OneDAO odao=new OneDAO();
+			odao.insert(ores);
+			oinp.setText("");
+			oct.setText("");
+			ocard.setIcon(cardimage("D:\\그림\\1카드.jpg"));
 		}
 	}
-	public JLabel settitle() {
+	private JLabel title() {
 		JLabel lb=new JLabel(user);
 		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,35));
 		lb.setForeground(Color.ORANGE);
-		lb.setBorder(new LineBorder(Color.YELLOW,3,true));
 		return lb;
 	}
+	private JLabel cardtitle() {
+		JLabel lb=new JLabel("");
+		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,20));
+		lb.setForeground(Color.WHITE);
+		return lb;
+	}
+	private ImageIcon cardimage(String imgpath) {
+		Image image1=new ImageIcon(imgpath).getImage();
+		Image scalp1=image1.getScaledInstance(250, 410, Image.SCALE_SMOOTH);
+		ImageIcon icon=new ImageIcon(scalp1);
+		return icon;
+	}
+	
 	
 	public JPanel getMpanel() {
 		return mpanel;

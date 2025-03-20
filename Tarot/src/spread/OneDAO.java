@@ -55,6 +55,7 @@ public class OneDAO extends BasicDAO{
 	public void insert(OneDTO o) {
 		PreparedStatement psmt=null;
 		Connection conn=null;
+		System.out.println(o);
 		try {
 			conn=getConnection();
 			String sq1="INSERT INTO one_spread VALUES(osq.nextval,?,?,default,?)";

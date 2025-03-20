@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -33,6 +34,7 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 	private JButton btn3=new JButton("카드  펼치기");
 	private CardLayout cl = (CardLayout) mp.getLayout();
 	private CardLayout cp = (CardLayout) sp.getLayout();
+	private Color brown=new Color(88,64,52);
 	private static Image ranimg;
 	
 
@@ -71,12 +73,15 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 		btnp.setOpaque(false);
 		btnp.setLayout(new FlowLayout());
 		btn1.addActionListener(this);
+		btn1.setBackground(brown);
 		btnp.add(btn1);
 		btnp.add(new JLabel("                          "));
 		btn2.addActionListener(this);
+		btn2.setBackground(brown);
 		btnp.add(btn2);
 		btnp.add(new JLabel("                          "));
 		btn3.addActionListener(this);
+		btn3.setBackground(brown);
 		btnp.add(btn3);
 		bk.add("South",btnp);
 	}
