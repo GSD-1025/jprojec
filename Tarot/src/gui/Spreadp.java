@@ -47,16 +47,25 @@ public class Spreadp extends JPanel implements ActionListener{
 	private JButton btn4;
 	private JButton btn5;
 	private JButton btn6;
+	private JButton btn7;
 	private JList<String> ul;
 	private JLabel cdptitle1;
 	private JLabel cdptitle2;
 	private JLabel ocard;
 	private JLabel oct;
+	private JLabel tcard1;
+	private JLabel tcard2;
+	private JLabel tcard3;
+	private JLabel tct1;
+	private JLabel tct2;
+	private JLabel tct3;
 	private JTextField oinp;
+	private JTextField tinp;
 	private Font f=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,80);
 	private Font f2=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,15);
 	private Color brown=new Color(88,64,52);
 	private String user;
+	private int tcnt;
 	private OneDTO ores=new OneDTO();
 	private ThreeDTO tres=new ThreeDTO();
 	
@@ -90,7 +99,7 @@ public class Spreadp extends JPanel implements ActionListener{
 		title1.setHorizontalAlignment(JLabel.CENTER);
 		title1.setFont(f);
 		title1.setForeground(Color.LIGHT_GRAY);
-		btn1=new JButton(cardimage("D:\\그림\\3-1.jpg",300,640));
+		btn1=new JButton(cardimage("D:\\그림\\3-1.jpg",248,410));
 		btn1.setLayout(new BorderLayout());
 		btn1.setBackground(Color.WHITE);
 		btn1.setOpaque(false);
@@ -126,13 +135,13 @@ public class Spreadp extends JPanel implements ActionListener{
 		btn4.setBorderPainted(false);
 		btn4.setBounds(65, 55, 120, 40);
 		btn4.addActionListener(this);
-		btn6=new JButton("해석 결과");
-		btn6.setBackground(brown);
-		btn6.setFont(f2);
-		btn6.setBorderPainted(false);
-		btn6.setBounds(230, 562, 120, 40);
-		btn6.addActionListener(this);
-		ocard=new JLabel(cardimage("D:\\그림\\3-1.jpg",340,700));
+		btn5=new JButton("해석 결과");
+		btn5.setBackground(brown);
+		btn5.setFont(f2);
+		btn5.setBorderPainted(false);
+		btn5.setBounds(230, 562, 120, 40);
+		btn5.addActionListener(this);
+		ocard=new JLabel(cardimage("D:\\그림\\3-1.jpg",248,410));
 		ocard.setBounds(480, 117, 250, 410);
 		oct=cardtitle();
 		oct.setBounds(540, 70, 250, 50);
@@ -142,7 +151,7 @@ public class Spreadp extends JPanel implements ActionListener{
 		panel.add(btn4);
 		panel.add(ocard);
 		panel.add(oct);
-		panel.add(btn6);
+		panel.add(btn5);
 		panel.add(oinp);
 		return panel;
 	}
@@ -152,13 +161,41 @@ public class Spreadp extends JPanel implements ActionListener{
 		panel.setOpaque(false);
 		cdptitle2=title();
 		cdptitle2.setBounds(60, 0, 350, 50);
-		btn5=new JButton("카드 뽑기");
-		btn5.setBackground(brown);
-		btn5.setFont(f2);
-		btn5.setBorderPainted(false);
-		btn5.setBounds(65, 55, 140, 40);
+		btn6=new JButton("카드 뽑기");
+		btn6.setBackground(brown);
+		btn6.setFont(f2);
+		btn6.setBorderPainted(false);
+		btn6.setBounds(65, 55, 140, 40);
+		btn7=new JButton("해석 결과");
+		btn7.setBackground(brown);
+		btn7.setFont(f2);
+		btn7.setBorderPainted(false);
+		btn7.setBounds(230, 562, 120, 40);
+		btn7.addActionListener(this);
+		tinp=new JTextField();
+		tinp.setBounds(360, 567, 500, 30);
+		tcard1=new JLabel(cardimage("D:\\그림\\3-2.jpg",248,410));
+		tcard1.setBounds(100, 117, 250, 410);
+		tct1=cardtitle();
+		tct1.setBounds(160, 70, 250, 50);
+		tcard2=new JLabel(cardimage("D:\\그림\\3-1.jpg",248,410));
+		tcard2.setBounds(480, 117, 250, 410);
+		tct2=cardtitle();
+		tct2.setBounds(540, 70, 250, 50);
+		tcard3=new JLabel(cardimage("D:\\그림\\3-3.jpg",248,410));
+		tcard3.setBounds(860, 117, 250, 410);
+		tct3=cardtitle();
+		tct3.setBounds(920, 70, 250, 50);
 		panel.add(cdptitle2);
-		panel.add(btn5);
+		panel.add(btn6);
+		panel.add(btn7);
+		panel.add(tinp);
+		panel.add(tcard1);
+		panel.add(tcard2);
+		panel.add(tcard3);
+		panel.add(tct1);
+		panel.add(tct2);
+		panel.add(tct3);
 		return panel;
 	}
 	
@@ -203,7 +240,7 @@ public class Spreadp extends JPanel implements ActionListener{
 			cdptitle2.setText("");
 			cdptitle2.setVisible(false);
 			oct.setVisible(false);
-			ocard.setIcon(cardimage("D:\\그림\\3-1.jpg",340,700));
+			ocard.setIcon(cardimage("D:\\그림\\3-1.jpg",248,410));
 			uresist();
 			card.show(mpanel,"p2");
 		}else if(e.getSource()==btn2) {
@@ -212,7 +249,7 @@ public class Spreadp extends JPanel implements ActionListener{
 			cdptitle2.setText("");
 			cdptitle2.setVisible(false);
 			oct.setVisible(false);
-			ocard.setIcon(cardimage("D:\\그림\\3-1.jpg",340,700));
+			ocard.setIcon(cardimage("D:\\그림\\3-1.jpg",248,410));
 			uresist();
 			card.show(mpanel,"p3");
 		}else if(e.getSource()==btn3) {
@@ -232,16 +269,21 @@ public class Spreadp extends JPanel implements ActionListener{
 			oct.setText(mj.getName()+"-"+mj.getWay());
 			oct.setVisible(true);
 			ocard.setIcon(cardimage(imgpath,250,410));
-		}else if(e.getSource()==btn6) {
+		}else if(e.getSource()==btn5) {
 			ores.setInterpret(oinp.getText());
 			OneDAO odao=new OneDAO();
 			odao.insert(ores);
 			oinp.setText("");
 			oct.setText("");
-			ocard.setIcon(cardimage("D:\\그림\\3-1.jpg",340,700));
+			ocard.setIcon(cardimage("D:\\그림\\3-1.jpg",248,410));
 			userp.revone();
+		}else if(e.getSource()==btn6) {
+			
+		}else if(e.getSource()==btn7) {
+			
 		}
 	}
+	
 	private JLabel title() {
 		JLabel lb=new JLabel(user);
 		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,35));
