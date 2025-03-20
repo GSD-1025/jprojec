@@ -32,6 +32,7 @@ public class Spreadp extends JPanel implements ActionListener{
 	
 	
 	private static Spreadp sp=null;
+	private Userp userp=Userp.getInstance();
 	private Random ran=new Random();
 	private Load load=Load.getInstance();
 	private CardLayout card;
@@ -117,6 +118,7 @@ public class Spreadp extends JPanel implements ActionListener{
 		panel.add(btn2);
 		return panel;
 	}
+	
 	public JPanel oneP() {
 		JPanel panel=new JPanel(null);
 		panel.setOpaque(false);
@@ -239,6 +241,7 @@ public class Spreadp extends JPanel implements ActionListener{
 			oinp.setText("");
 			oct.setText("");
 			ocard.setIcon(cardimage("D:\\그림\\1카드.jpg"));
+			userp.revone();
 		}
 	}
 	private JLabel title() {
@@ -264,8 +267,6 @@ public class Spreadp extends JPanel implements ActionListener{
 	public JPanel getMpanel() {
 		return mpanel;
 	}
-	public JList getUl() {
-		return ul;
-	}
+	
 	
 }

@@ -33,6 +33,8 @@ import user.UserDAO;
 import user.UserDTO;
 
 public class Userp extends JPanel implements ActionListener{
+	
+	private static Userp userp=null;
 	private Load load=Load.getInstance();
 	private UserDAO udao=new UserDAO();
 	private OneDAO o=new OneDAO();
@@ -40,7 +42,9 @@ public class Userp extends JPanel implements ActionListener{
 	private CardLayout card;
 	private JLabel ujl;
 	private JPanel temp2;
-	private JPanel ttemp3;
+	private JPanel oneinp;
+	private JPanel threeinp;
+	private JPanel sinp;
 	private JPanel newuser;
 	private JPanel userlist;
 	private JPanel deco;
@@ -58,10 +62,22 @@ public class Userp extends JPanel implements ActionListener{
 	private JTable jt2;
 	private JTable jt3;
 	private JTable jt4;
+	private JScrollPane js1;
+	private JScrollPane js2;
 	private JScrollPane ujs;
 	private Color brown=new Color(88,64,52);
 	
-
+	
+	private Userp() {
+		
+	}
+	
+	public static Userp getInstance() {
+		if(userp==null) {
+			userp=new Userp();
+		}
+		return userp;
+	}
 
 	
 	public JPanel panel() {
@@ -180,7 +196,6 @@ public class Userp extends JPanel implements ActionListener{
 		return stemp;
 	}
 	
-	
 	private JPanel settingdeco() {
 		JPanel temp=new JPanel() {
 			@Override
@@ -205,9 +220,9 @@ public class Userp extends JPanel implements ActionListener{
 		lb1.setForeground(Color.BLACK);
 		temp.add("North",lb1);
 		temp2=new JPanel(new CardLayout());
-		JPanel ttemp1=new JPanel(new BorderLayout());
-		JPanel ttemp2=new JPanel(new BorderLayout());
-		ttemp3=new JPanel(new BorderLayout());
+		oneinp=new JPanel(new BorderLayout());
+		threeinp=new JPanel(new BorderLayout());
+		sinp=new JPanel(new BorderLayout());
 		temp2.setOpaque(false);
 		temp.add("West",temp2);
 		Font f2=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,15);
@@ -220,21 +235,21 @@ public class Userp extends JPanel implements ActionListener{
 		ujl= new JLabel("대상 없음");
 		ujl.setFont(f2);
 		ujl.setForeground(Color.BLACK);
-		JScrollPane js1=oneinsert();
-		JScrollPane js2=threeinsert();
+		js1=oneinsert();
+		js2=threeinsert();
 		ujs=specific("0000");
-		ttemp1.add("North",t1);
-		ttemp1.add("West",js1);
-		ttemp1.setOpaque(false);
-		temp2.add(ttemp1,"P1");
-		ttemp2.add("North",t2);
-		ttemp2.add("West",js2);
-		ttemp2.setOpaque(false);
-		temp2.add(ttemp2,"P2");
-		ttemp3.add("North",ujl);
-		ttemp3.add("West",ujs);
-		ttemp3.setOpaque(false);
-		temp2.add(ttemp3,"P3");
+		oneinp.add("North",t1);
+		oneinp.add("West",js1);
+		oneinp.setOpaque(false);
+		temp2.add(oneinp,"P1");
+		threeinp.add("North",t2);
+		threeinp.add("West",js2);
+		threeinp.setOpaque(false);
+		temp2.add(threeinp,"P2");
+		sinp.add("North",ujl);
+		sinp.add("West",ujs);
+		sinp.setOpaque(false);
+		temp2.add(sinp,"P3");
 		return temp;
 	}
 	private JScrollPane oneinsert() {
@@ -242,7 +257,7 @@ public class Userp extends JPanel implements ActionListener{
 		String[] header= {"카드","해석 결과","회원번호"};
 		String[][] contents= new String[olist.size()][3];
 		for(int i=0; i<olist.size(); i++) {
-			contents[i][0]=load.getcard(olist.get(i).getMnum());
+			contents[i][0]=load.getcard(olist.get(i).getMnum()-1);
 			contents[i][1]=olist.get(i).getInterpret();
 			contents[i][2]=olist.get(i).getUnum();
 		}
@@ -290,7 +305,7 @@ public class Userp extends JPanel implements ActionListener{
 		String[][] contents= new String[olist.size()+tlist.size()][3];
 		for(int i=0; i<olist.size(); i++) {
 			if(olist.get(i).getUnum().equals(unum)) {
-				contents[i][0]=load.getcard(olist.get(i).getMnum());
+				contents[i][0]=load.getcard(olist.get(i).getMnum()-1);
 				contents[i][1]=olist.get(i).getInterpret();
 				contents[i][2]=olist.get(i).getUnum();
 			}
@@ -385,12 +400,12 @@ public class Userp extends JPanel implements ActionListener{
 		}else if(e.getSource()==btn5) {
 			String unum=phbox.getText();
 			if(unum.equals("")) {
-				ttemp3.remove(ujs);
+				sinp.remove(ujs);
 				unum="대상 없음";
 			}else {
-				ttemp3.remove(ujs);
+				sinp.remove(ujs);
 				ujs=specific(unum);
-				ttemp3.add("West",ujs);
+				sinp.add("West",ujs);
 			}
 			ujl.setText(unum);
 			card.show(temp2, "P3");
@@ -432,5 +447,17 @@ public class Userp extends JPanel implements ActionListener{
 		}
 		
 	}
+	
+	public void revone() {
+		oneinp.remove(js1);
+		js1=oneinsert();
+		oneinp.add("West", js1);
+	}
+	public void revthree() {
+		threeinp.remove(js2);
+		js2=threeinsert();
+		threeinp.add("West", js2);
+	}
+	
 	
 }
