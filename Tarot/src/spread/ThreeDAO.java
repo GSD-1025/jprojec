@@ -42,7 +42,58 @@ public class ThreeDAO extends BasicDAO{
 		}
 		return tlist;
 	}
+	public ArrayList<Integer> loadpnum(String unum){
+		ArrayList<Integer> list= new ArrayList<>();
+		PreparedStatement psmt=null;
+		ResultSet rs=null;
+		Connection conn=null;
+		try {
+			conn=getConnection();
+			String sq1="select pnum FROM three_spread where unum=?";
+			psmt=conn.prepareStatement(sq1);
+			psmt.setString(1, unum);
+			while(rs.next()) {
+				list.add(rs.getInt("pnum"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			try {
+				rs.close();
+				psmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		return list;
+	}
+
 	
+	public void insert(ThreeDTO t) {
+		PreparedStatement psmt=null;
+		Connection conn=null;
+		try {
+			System.out.println(t);
+			conn=getConnection();
+			String sq1="insert into three_spread values(tsq.nextval,?,?,?,?,default)";
+			psmt=conn.prepareStatement(sq1);
+			psmt.setString(1, t.getUnum());
+			psmt.setInt(2, t.getPnum());
+			psmt.setString(3, t.getInterway());
+			psmt.setString(4, t.getInterpret());
+			psmt.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			try {
+				psmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 	public void delete(String unum) {
 		PreparedStatement psmt=null;
 		Connection conn=null;

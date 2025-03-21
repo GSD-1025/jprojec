@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +23,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import card.DrawcDAO;
 import main.Load;
 import spread.OneDAO;
 import spread.OneDTO;
@@ -369,6 +369,12 @@ public class Userp extends JPanel implements ActionListener{
 		}else if(e.getSource()==btn2) {
 			String name=nbox.getText();
 			String unum=phbox.getText();
+			ArrayList<Integer> list=t.loadpnum(unum);
+			System.out.println(list);
+			DrawcDAO ddao=new DrawcDAO();
+			for(int i=0; i<list.size(); i++) {
+				ddao.delete(list.get(i));
+			}
 			o.delete(unum);
 			t.delete(unum);
 			udao.delete(name,unum);
