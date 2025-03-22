@@ -25,15 +25,12 @@ public class MinorDAO extends BasicDAO{
 				c.setCardnum(rs.getString("card_num"));
 				c.setSuits(rs.getString("suits"));
 				c.setMean(rs.getString("mean"));
-				c.setNum(rs.getInt("minor_num"));
+				c.setMinornum(rs.getInt("minor_num"));
 				c.setImagepath(rs.getString("image_path"));
-				/*System.out.println(c);
-				System.out.println(c.getSuits());
-				System.out.println(c.getMinornum());*/
 				mlist.add(c);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		}finally {
 			try {
 				rs.close();

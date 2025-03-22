@@ -8,10 +8,6 @@ import card.MajorDAO;
 import card.MajorDTO;
 import card.MinorDAO;
 import card.MinorDTO;
-import spread.OneDAO;
-import spread.OneDTO;
-import spread.ThreeDAO;
-import spread.ThreeDTO;
 import user.UserDAO;
 import user.UserDTO;
 
@@ -21,8 +17,6 @@ public class Load {
 	private ArrayList<MajorDTO> major= new ArrayList<>();
 	private ArrayList<MinorDTO> minor=new ArrayList<>();
 	private ArrayList<UserDTO> ulist=userLoad();
-	private ArrayList<OneDTO> olist=new ArrayList<OneDTO>();
-	private ArrayList<ThreeDTO> tlist=new ArrayList<ThreeDTO>();
 	private ArrayList<DrawcDTO> dlist=new ArrayList<DrawcDTO>();
 	
 	
@@ -36,7 +30,6 @@ public class Load {
 	private Load() {
 		cardLoad();
 		userLoad();
-		spreadLoad();
 		drawload();
 		check();
 	}
@@ -46,12 +39,6 @@ public class Load {
 		dlist=d.drawload();
 	}
 
-	private void spreadLoad() {
-		OneDAO o= new OneDAO();
-		olist=o.loadOne();
-		ThreeDAO t= new ThreeDAO();
-		tlist=t.loadThree();
-	}
 
 	public ArrayList<UserDTO> userLoad() {
 		UserDAO u= new UserDAO();
@@ -66,14 +53,7 @@ public class Load {
 		minor=mi.loadMinor();
 	}
 	
-	public String getimagepath(int i, int k) {
-		if(i==1) {
-			return major.get(2*k).getImagepath();
-		}else if(i==2) {
-			return minor.get(k).getImagepath();
-		}
-		return null;
-	}
+	
 	
 	public MajorDTO getmajor(int i) {
 		MajorDTO mj=major.get(i);
@@ -84,10 +64,6 @@ public class Load {
 		return mi;
 	}
 	
-	public String getcard(int j) {
-		return major.get(j).getName();
-		
-	}
 	
 	public String threecard(int i) {
 		String cardsum="";
@@ -108,13 +84,10 @@ public class Load {
 		}
 		return cardsum;
 	}
-	
 	public String[] getuserlsit(){
 		ArrayList<String> list=new ArrayList<>();
 		for(UserDTO u: userLoad()) {
-			list.add(u.getName()+" "
-					+ ""
-					+ ""+u.getUnum());
+			list.add(u.getName()+" "+u.getUnum());
 		}
 		String[] ulist=new String[list.size()];
 		for(int i=0; i<ulist.length; i++) {
@@ -123,15 +96,13 @@ public class Load {
 		return ulist;
 	}
 	
-	
-	
 	public void check() { //과정 확인용
-		//for(MajorDTO m: major) {
-			//m.prt();
-		//}
-		//for(MinorDTO m: minor) {
-			//m.prt();
-		//}
+		for(MajorDTO m: major) {
+			m.prt();
+		}
+		for(MinorDTO m: minor) {
+			m.prt();
+		}
 		//for(UserDTO u: ulist) {
 			//u.prt();
 		//}
@@ -145,5 +116,4 @@ public class Load {
 			//d.prt();
 		//}
 	}
-
 }

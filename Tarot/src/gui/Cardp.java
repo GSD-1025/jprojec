@@ -50,7 +50,7 @@ public class Cardp extends JPanel{
 		return panel;
 	}
 	private JButton addmjbtn(int i) {
-		String mj=load.getimagepath(1,i);
+		String mj=load.getmajor(2*i).getImagepath();
 		Image image=new ImageIcon(mj).getImage();
 		Image scalp=image.getScaledInstance(70, 109, Image.SCALE_SMOOTH);
 		ImageIcon butimg= new ImageIcon(scalp);
@@ -78,7 +78,7 @@ public class Cardp extends JPanel{
 		return panel;
 	}
 	private JButton addmibtn(int i) {
-		String mi=load.getimagepath(2,i);
+		String mi=load.getminor(i).getImagepath();
 		Image image=new ImageIcon(mi).getImage();
 		Image scalp=image.getScaledInstance(60, 91, Image.SCALE_SMOOTH);
 		ImageIcon butimg= new ImageIcon(scalp);

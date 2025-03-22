@@ -184,6 +184,7 @@ public class Userp extends JPanel implements ActionListener{
 			contents[i][3]=u.get(i).getPhone();
 			contents[i][4]=String.valueOf(u.get(i).getCnt());
 		}
+		@SuppressWarnings("serial")
 		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
 			public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -197,6 +198,7 @@ public class Userp extends JPanel implements ActionListener{
 	}
 	
 	private JPanel settingdeco() {
+		@SuppressWarnings("serial")
 		JPanel temp=new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
@@ -257,10 +259,11 @@ public class Userp extends JPanel implements ActionListener{
 		String[] header= {"카드","해석 결과","회원번호"};
 		String[][] contents= new String[olist.size()][3];
 		for(int i=0; i<olist.size(); i++) {
-			contents[i][0]=load.getcard(olist.get(i).getMnum()-1);
+			contents[i][0]=load.getmajor(olist.get(i).getMnum()-1).getName();
 			contents[i][1]=olist.get(i).getInterpret();
 			contents[i][2]=olist.get(i).getUnum();
 		}
+		@SuppressWarnings("serial")
 		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
 			public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -284,6 +287,7 @@ public class Userp extends JPanel implements ActionListener{
 			contents[i][1]=tlist.get(i).getInterway()+": "+tlist.get(i).getInterpret();
 			contents[i][2]=tlist.get(i).getUnum();
 		}
+		@SuppressWarnings("serial")
 		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
 			public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -305,7 +309,7 @@ public class Userp extends JPanel implements ActionListener{
 		String[][] contents= new String[olist.size()+tlist.size()][3];
 		for(int i=0; i<olist.size(); i++) {
 			if(olist.get(i).getUnum().equals(unum)) {
-				contents[i][0]=load.getcard(olist.get(i).getMnum()-1);
+				contents[i][0]=load.getmajor(olist.get(i).getMnum()-1).getName();
 				contents[i][1]=olist.get(i).getInterpret();
 				contents[i][2]=olist.get(i).getUnum();
 			}
@@ -317,6 +321,7 @@ public class Userp extends JPanel implements ActionListener{
 				contents[i+olist.size()][2]=tlist.get(i).getUnum();
 			}
 		}
+		@SuppressWarnings("serial")
 		DefaultTableModel model = new DefaultTableModel(contents, header) {
 			public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -367,17 +372,15 @@ public class Userp extends JPanel implements ActionListener{
 			agbox.setText("");
 			phbox.setText("");		
 		}else if(e.getSource()==btn2) {
-			String name=nbox.getText();
 			String unum=phbox.getText();
 			ArrayList<Integer> list=t.loadpnum(unum);
-			System.out.println(list);
 			DrawcDAO ddao=new DrawcDAO();
+			o.delete(unum);
+			t.delete(unum);
+			udao.delete(unum);
 			for(int i=0; i<list.size(); i++) {
 				ddao.delete(list.get(i));
 			}
-			o.delete(unum);
-			t.delete(unum);
-			udao.delete(name,unum);
 			for(int i=0; i<jt1.getRowCount(); i++) {
 				if(jt1.getValueAt(i, 1).equals(unum)) {
 					deletelist(i,1);

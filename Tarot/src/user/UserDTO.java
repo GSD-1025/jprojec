@@ -1,6 +1,5 @@
 package user;
 
-import java.util.Random;
 
 import lombok.Data;
 

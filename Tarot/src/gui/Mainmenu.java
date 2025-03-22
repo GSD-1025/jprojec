@@ -24,20 +24,8 @@ import main.Load;
 public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 	private Load load=Load.getInstance();
 	private Spreadp spreadp=Spreadp.getInstance();
-	private Image back=new ImageIcon("D:\\그림\\배경.jpg").getImage();
-	private String mt="Main Title";
-	private Font f=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,70);
 	private JPanel mp=Mpanel.panel();
 	private JPanel sp=spreadp.getMpanel();
-	private JButton btn1=new JButton("카드 정보");
-	private JButton btn2=new JButton("이용자  정보");
-	private JButton btn3=new JButton("카드  펼치기");
-	private CardLayout cl = (CardLayout) mp.getLayout();
-	private CardLayout cp = (CardLayout) sp.getLayout();
-	private Color brown=new Color(88,64,52);
-	private static Image ranimg;
-	
-
 	private JPanel bk=new JPanel() {
 		@Override
 		protected void paintComponent(Graphics g) {
@@ -47,10 +35,21 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 			super.paintComponent(g);
 		}
 	};
+	private JButton btn1=new JButton("카드 정보");
+	private JButton btn2=new JButton("이용자  정보");
+	private JButton btn3=new JButton("카드  펼치기");
+	private CardLayout cl = (CardLayout) mp.getLayout();
+	private CardLayout cp = (CardLayout) sp.getLayout();
+	private Color brown=new Color(88,64,52);
+	private static Image ranimg;
+	private String mt="Main Title";
+	private Image back=new ImageIcon("D:\\그림\\배경.jpg").getImage();
+	private Font f=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,70);
+	
 	
 	public Mainmenu() {
 		this.setTitle("프로그램");
-		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(Mainmenu.EXIT_ON_CLOSE);
 		this.setSize(1208, 860);
 		this.setResizable(false);
 		bk.setLayout(new BorderLayout());
@@ -64,8 +63,6 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 		a.setOpaque(false);
 		this.add(a);
 		a.setBounds(0, 0, 100, 100);
-		
-		
 	}
 	
 	private void btn() {
@@ -86,7 +83,6 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 		bk.add("South",btnp);
 	}
 	
-
 	private void title() {
 		JLabel lb1=new JLabel(mt);
 		lb1.setHorizontalAlignment(JLabel.CENTER);
@@ -107,9 +103,9 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 			int r2=r.nextInt(22);
 			int r3=r.nextInt(56);
 			if(r1==1) {
-				ranimgpath=load.getimagepath(1, r2);
+				ranimgpath=load.getmajor(r2*2).getImagepath();
 			}else if(r1==2) {
-				ranimgpath=load.getimagepath(2, r3);
+				ranimgpath=load.getminor(r3).getImagepath();
 			}
 			ranimg=new ImageIcon(ranimgpath).getImage();
 		}else if(e.getSource()==btn3) {
@@ -122,6 +118,7 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 		return ranimg;
 	}
 
+	//마우스 좌표 확인용
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		System.out.println(e.getX()+" "+e.getY());

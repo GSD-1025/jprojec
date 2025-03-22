@@ -1,14 +1,12 @@
 package gui;
 
 import java.awt.CardLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Mpanel extends JPanel{
-	static JButton a;
+
 	
 	
 	public static JPanel panel() {

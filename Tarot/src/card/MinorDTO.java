@@ -1,21 +1,13 @@
 package card;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class MinorDTO extends Card{
 	private String suits=null;
 	private int minornum;
 
-	@Override
-	public void setNum(int num) {
-		this.minornum=num;
-	}
-	@Override
-	public void setSuits(String suits) {
-		this.suits=suits;
-	}
-	
+
 	public void prt() {
 		System.out.print(super.getCardnum());
 		System.out.print(this.suits);

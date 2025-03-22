@@ -10,15 +10,6 @@ import card.BasicDAO;
 
 public class OneDAO extends BasicDAO{
 	
-	private static OneDAO odao=null;
-	
-	public static OneDAO getInstance() {
-		if(odao==null) {
-			odao=new OneDAO();
-		}
-		return odao;
-	}
-	
 	public ArrayList<OneDTO> loadOne(){
 		ArrayList<OneDTO> olist=new ArrayList<>();
 		Statement stmt=null;

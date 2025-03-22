@@ -49,9 +49,10 @@ public class ThreeDAO extends BasicDAO{
 		Connection conn=null;
 		try {
 			conn=getConnection();
-			String sq1="select pnum FROM three_spread where unum=?";
+			String sq1="select PNUM FROM three_spread where user_num=?";
 			psmt=conn.prepareStatement(sq1);
 			psmt.setString(1, unum);
+			rs=psmt.executeQuery();
 			while(rs.next()) {
 				list.add(rs.getInt("pnum"));
 			}
@@ -69,12 +70,10 @@ public class ThreeDAO extends BasicDAO{
 		return list;
 	}
 
-	
 	public void insert(ThreeDTO t) {
 		PreparedStatement psmt=null;
 		Connection conn=null;
 		try {
-			System.out.println(t);
 			conn=getConnection();
 			String sq1="insert into three_spread values(tsq.nextval,?,?,?,?,default)";
 			psmt=conn.prepareStatement(sq1);

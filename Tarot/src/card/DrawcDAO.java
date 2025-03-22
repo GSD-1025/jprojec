@@ -108,7 +108,7 @@ public class DrawcDAO extends BasicDAO{
 			conn=getConnection();
 			String sq1="delete from pull_card where pnum=?";
 			psmt=conn.prepareStatement(sq1);
-			psmt.setInt(1,i);
+			psmt.setInt(1, i);
 			psmt.execute();
 		} catch (Exception e) {
 			// TODO: handle exception

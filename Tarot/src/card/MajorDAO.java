@@ -27,7 +27,7 @@ public class MajorDAO extends BasicDAO{
 				c.setName(rs.getString("name"));
 				c.setWay(rs.getString("way"));
 				c.setMean(rs.getString("mean"));
-				c.setNum(rs.getInt("major_num"));
+				c.setMajornum(rs.getInt("major_num"));
 				c.setImagepath(rs.getString("image_path"));
 				mlist.add(c);
 			}
@@ -42,7 +42,6 @@ public class MajorDAO extends BasicDAO{
 				e2.printStackTrace();
 			}
 		}
-		mlist.remove("0000");
 		return mlist;
 	}
 		

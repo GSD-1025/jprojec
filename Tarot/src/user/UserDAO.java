@@ -68,15 +68,14 @@ public class UserDAO extends BasicDAO{
 		}
 	}
 	
-	public void delete(String name, String unum) {
+	public void delete(String unum) {
 		PreparedStatement psmt=null;
 		Connection conn=null;
 		try {
 			conn=getConnection();
-			String sq1="delete from userinfo where name=? and user_num=?";
+			String sq1="delete from userinfo where user_num=?";
 			psmt=conn.prepareStatement(sq1);
-			psmt.setString(1, name);
-			psmt.setString(2, unum);
+			psmt.setString(1, unum);
 			psmt.execute();
 		} catch (Exception e) {
 			
