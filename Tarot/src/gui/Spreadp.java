@@ -75,7 +75,6 @@ public class Spreadp extends JPanel implements ActionListener{
 	private int dpnum2=-1;
 	private int pack1=-1;
 	private int pack2=-1;
-	
 	private OneDTO ores=new OneDTO();
 	private ThreeDTO tres=new ThreeDTO();
 	private DrawcDTO dcard=new DrawcDTO();
@@ -247,6 +246,24 @@ public class Spreadp extends JPanel implements ActionListener{
 	}
 	
 	
+	private JLabel title() {
+		JLabel lb=new JLabel(user);
+		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,35));
+		lb.setForeground(Color.ORANGE);
+		return lb;
+	}
+	private JLabel cardtitle() {
+		JLabel lb=new JLabel("");
+		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,20));
+		lb.setForeground(Color.WHITE);
+		return lb;
+	}
+	private ImageIcon cardimage(String imgpath, int w, int h) {
+		Image image1=new ImageIcon(imgpath).getImage();
+		Image scalp1=image1.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+		ImageIcon icon=new ImageIcon(scalp1);
+		return icon;
+	}
 	
 	
 	@Override
@@ -426,24 +443,7 @@ public class Spreadp extends JPanel implements ActionListener{
 		}
 	}
 	
-	private JLabel title() {
-		JLabel lb=new JLabel(user);
-		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,35));
-		lb.setForeground(Color.ORANGE);
-		return lb;
-	}
-	private JLabel cardtitle() {
-		JLabel lb=new JLabel("");
-		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,20));
-		lb.setForeground(Color.WHITE);
-		return lb;
-	}
-	private ImageIcon cardimage(String imgpath, int w, int h) {
-		Image image1=new ImageIcon(imgpath).getImage();
-		Image scalp1=image1.getScaledInstance(w, h, Image.SCALE_SMOOTH);
-		ImageIcon icon=new ImageIcon(scalp1);
-		return icon;
-	}
+	
 	
 	
 	public JPanel getMpanel() {

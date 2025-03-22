@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.CardLayout;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Mpanel extends JPanel{

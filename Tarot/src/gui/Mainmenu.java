@@ -35,14 +35,14 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 			super.paintComponent(g);
 		}
 	};
-	private JButton btn1=new JButton("카드 정보");
-	private JButton btn2=new JButton("이용자  정보");
-	private JButton btn3=new JButton("카드  펼치기");
+	private JButton btn1;
+	private JButton btn2;
+	private JButton btn3;
+	private JLabel lb1;
 	private CardLayout cl = (CardLayout) mp.getLayout();
 	private CardLayout cp = (CardLayout) sp.getLayout();
 	private Color brown=new Color(88,64,52);
 	private static Image ranimg;
-	private String mt="Main Title";
 	private Image back=new ImageIcon("D:\\그림\\배경.jpg").getImage();
 	private Font f=new Font(Font.SERIF,Font.BOLD|Font.ITALIC,70);
 	
@@ -55,8 +55,9 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 		bk.setLayout(new BorderLayout());
 		this.add(bk);
 		title();
+		bk.add("North",lb1);
 		bk.add("Center",mp);
-		btn();
+		bk.add("South",btn());
 		this.setVisible(true);
 		JButton a=new JButton();// 마우스 포인터
 		a.addMouseListener(this);
@@ -65,10 +66,13 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 		a.setBounds(0, 0, 100, 100);
 	}
 	
-	private void btn() {
+	private JPanel btn() {
 		JPanel btnp=new JPanel();
 		btnp.setOpaque(false);
 		btnp.setLayout(new FlowLayout());
+		btn1=new JButton("카드 정보");
+		btn2=new JButton("이용자  정보");
+		btn3=new JButton("카드  펼치기");
 		btn1.addActionListener(this);
 		btn1.setBackground(brown);
 		btnp.add(btn1);
@@ -80,15 +84,14 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 		btn3.addActionListener(this);
 		btn3.setBackground(brown);
 		btnp.add(btn3);
-		bk.add("South",btnp);
+		return btnp;
 	}
 	
 	private void title() {
-		JLabel lb1=new JLabel(mt);
+		lb1=new JLabel("Tarot Helper");
 		lb1.setHorizontalAlignment(JLabel.CENTER);
 		lb1.setOpaque(false);
 		lb1.setFont(f);
-		bk.add("North",lb1);
 	}
 	
 	@Override

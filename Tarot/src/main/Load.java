@@ -31,7 +31,6 @@ public class Load {
 		cardLoad();
 		userLoad();
 		drawload();
-		check();
 	}
 	
 	private void drawload() {
@@ -94,26 +93,5 @@ public class Load {
 			ulist[i]=list.get(i);
 		}
 		return ulist;
-	}
-	
-	public void check() { //과정 확인용
-		for(MajorDTO m: major) {
-			m.prt();
-		}
-		for(MinorDTO m: minor) {
-			m.prt();
-		}
-		//for(UserDTO u: ulist) {
-			//u.prt();
-		//}
-		//for(OneDTO o: olist) {
-			//o.prt();
-		//}
-		//for(ThreeDTO t: tlist) {
-			//t.prt();
-		//}
-		//for(DrawcDTO d:dlist) {
-			//d.prt();
-		//}
 	}
 }

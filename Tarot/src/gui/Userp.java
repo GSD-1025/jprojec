@@ -71,7 +71,6 @@ public class Userp extends JPanel implements ActionListener{
 	private Userp() {
 		
 	}
-	
 	public static Userp getInstance() {
 		if(userp==null) {
 			userp=new Userp();
