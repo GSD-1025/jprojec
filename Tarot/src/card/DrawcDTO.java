@@ -1,8 +1,11 @@
 package card;
 
-import lombok.Data;
 
-@Data
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class DrawcDTO {
 	private int pnum;
 	private int card1;

@@ -186,7 +186,6 @@ public class Userp extends JPanel implements ActionListener{
 			contents[i][3]=u.get(i).getPhone();
 			contents[i][4]=String.valueOf(u.get(i).getCnt());
 		}
-		@SuppressWarnings("serial")
 		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
 			public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -200,7 +199,6 @@ public class Userp extends JPanel implements ActionListener{
 	}
 	
 	private JPanel settingdeco() {
-		@SuppressWarnings("serial")
 		JPanel temp=new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
