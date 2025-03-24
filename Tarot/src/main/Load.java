@@ -38,7 +38,6 @@ public class Load {
 		dlist=d.drawload();
 	}
 
-
 	public ArrayList<UserDTO> userLoad() {
 		UserDAO u= new UserDAO();
 		ulist=u.loadUser();
@@ -53,7 +52,6 @@ public class Load {
 	}
 	
 	
-	
 	public MajorDTO getmajor(int i) {
 		MajorDTO mj=major.get(i);
 		return mj;
@@ -62,8 +60,6 @@ public class Load {
 		MinorDTO mi=minor.get(i);
 		return mi;
 	}
-	
-	
 	public String threecard(int i) {
 		String cardsum="";
 		if(dlist.get(i).getCard1()!=0) {

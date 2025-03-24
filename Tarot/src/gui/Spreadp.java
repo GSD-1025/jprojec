@@ -31,6 +31,7 @@ import spread.OneDAO;
 import spread.OneDTO;
 import spread.ThreeDAO;
 import spread.ThreeDTO;
+import user.UserDAO;
 
 public class Spreadp extends JPanel implements ActionListener{
 	
@@ -245,7 +246,6 @@ public class Spreadp extends JPanel implements ActionListener{
 		d.setVisible(true);
 	}
 	
-	
 	private JLabel title() {
 		JLabel lb=new JLabel(user);
 		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,35));
@@ -265,6 +265,9 @@ public class Spreadp extends JPanel implements ActionListener{
 		return icon;
 	}
 	
+	public JPanel getMpanel() {
+		return mpanel;
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -309,6 +312,11 @@ public class Spreadp extends JPanel implements ActionListener{
 			oct.setText("");
 			ocard.setIcon(cardimage("D:\\그림\\3-1.jpg",248,410));
 			userp.revone();
+			user=ul.getSelectedValue();
+			String[] s=user.split(" ");
+			UserDAO u=new UserDAO();
+			u.increasecnt(s[1]);
+			userp.revul();
 		}else if(e.getSource()==btn6) {
 			tcnt++;
 			MajorDTO mj=null;
@@ -440,15 +448,18 @@ public class Spreadp extends JPanel implements ActionListener{
 			tcard2.setIcon(cardimage("D:\\그림\\3-1.jpg",248,410));
 			tcard3.setIcon(cardimage("D:\\그림\\3-3.jpg",248,410));
 			userp.revthree();
+			user=ul.getSelectedValue();
+			String[] s=user.split(" ");
+			UserDAO u=new UserDAO();
+			u.increasecnt(s[1]);
+			userp.revul();
 		}
 	}
 	
 	
 	
 	
-	public JPanel getMpanel() {
-		return mpanel;
-	}
+	
 	
 	
 }

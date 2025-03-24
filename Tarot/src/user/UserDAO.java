@@ -26,6 +26,7 @@ public class UserDAO extends BasicDAO{
 				u.setUnum(rs.getString("user_num"));
 				u.setAge(rs.getInt("age"));
 				u.setPhone(rs.getString("ph_num"));
+				u.setCnt(rs.getInt("cnt"));
 				ulist.add(u);
 			}
 		} catch (Exception e) {
@@ -89,7 +90,26 @@ public class UserDAO extends BasicDAO{
 		}
 
 	}
-	
-	
-	
+		
+	public void increasecnt(String unum) {
+		PreparedStatement psmt=null;
+		Connection conn=null;
+		try {
+			conn=getConnection();
+			String sq1="update userinfo set cnt=cnt+1 where user_num=?";
+			psmt=conn.prepareStatement(sq1);
+			psmt.setString(1, unum);
+			psmt.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			try {
+				psmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+
 }

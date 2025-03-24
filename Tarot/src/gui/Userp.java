@@ -62,6 +62,7 @@ public class Userp extends JPanel implements ActionListener{
 	private JTable jt2;
 	private JTable jt3;
 	private JTable jt4;
+	private JScrollPane uljs;
 	private JScrollPane js1;
 	private JScrollPane js2;
 	private JScrollPane ujs;
@@ -168,8 +169,9 @@ public class Userp extends JPanel implements ActionListener{
 		lb1.setHorizontalAlignment(JLabel.LEFT);
 		lb1.setFont(f);
 		lb1.setForeground(Color.BLACK);
+		uljs=ulinsert();
 		temp.add("North",lb1);
-		temp.add("West",ulinsert());
+		temp.add("West",uljs);
 		return temp;
 	}
 	private JScrollPane ulinsert() {
@@ -456,6 +458,11 @@ public class Userp extends JPanel implements ActionListener{
 		
 	}
 	
+	public void revul() {
+		userlist.remove(uljs);
+		uljs=ulinsert();
+		userlist.add("West",uljs);
+	}
 	public void revone() {
 		oneinp.remove(js1);
 		js1=oneinsert();
