@@ -32,6 +32,7 @@ import spread.ThreeDTO;
 import user.UserDAO;
 import user.UserDTO;
 
+@SuppressWarnings("serial")
 public class Userp extends JPanel implements ActionListener{
 	
 	private static Userp userp=null;

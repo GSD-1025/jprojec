@@ -1,8 +1,11 @@
 package spread;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+
 
 public class OneDTO extends Spread{
 	private int mnum;

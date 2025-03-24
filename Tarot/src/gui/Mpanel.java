@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class Mpanel extends JPanel{
 
 	

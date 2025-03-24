@@ -18,6 +18,7 @@ import card.MajorDTO;
 import card.MinorDTO;
 import main.Load;
 
+@SuppressWarnings("serial")
 public class Cardp extends JPanel{
 	private Load load=Load.getInstance();
 	private JButton[] mib=new JButton[56];

@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 
 import main.Load;
 
+@SuppressWarnings("serial")
 public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 	private Load load=Load.getInstance();
 	private Spreadp spreadp=Spreadp.getInstance();

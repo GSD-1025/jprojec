@@ -33,6 +33,7 @@ import spread.ThreeDAO;
 import spread.ThreeDTO;
 import user.UserDAO;
 
+@SuppressWarnings("serial")
 public class Spreadp extends JPanel implements ActionListener{
 	
 	

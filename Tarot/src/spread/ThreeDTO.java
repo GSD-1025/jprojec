@@ -1,8 +1,10 @@
 package spread;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ThreeDTO extends Spread{
 	
 	private int pnum;
