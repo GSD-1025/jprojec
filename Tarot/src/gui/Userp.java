@@ -263,7 +263,6 @@ public class Userp extends JPanel implements ActionListener{
 			contents[i][1]=olist.get(i).getInterpret();
 			contents[i][2]=olist.get(i).getUnum();
 		}
-		@SuppressWarnings("serial")
 		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
 			public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -287,7 +286,6 @@ public class Userp extends JPanel implements ActionListener{
 			contents[i][1]=tlist.get(i).getInterway()+": "+tlist.get(i).getInterpret();
 			contents[i][2]=tlist.get(i).getUnum();
 		}
-		@SuppressWarnings("serial")
 		DefaultTableModel defaultmodel = new DefaultTableModel(contents, header) {
 			public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -321,7 +319,6 @@ public class Userp extends JPanel implements ActionListener{
 				contents[i+olist.size()][2]=tlist.get(i).getUnum();
 			}
 		}
-		@SuppressWarnings("serial")
 		DefaultTableModel model = new DefaultTableModel(contents, header) {
 			public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -472,6 +469,5 @@ public class Userp extends JPanel implements ActionListener{
 		js2=threeinsert();
 		threeinp.add("West", js2);
 	}
-	
 	
 }

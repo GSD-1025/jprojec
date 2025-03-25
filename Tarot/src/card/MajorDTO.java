@@ -13,5 +13,4 @@ public class MajorDTO extends Card{
 	private String way=null;
 	private int majornum;
 
-	
 }

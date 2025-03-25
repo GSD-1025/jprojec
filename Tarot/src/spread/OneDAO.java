@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import card.BasicDAO;
+import main.BasicDAO;
 
 public class OneDAO extends BasicDAO{
 	

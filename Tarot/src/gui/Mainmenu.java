@@ -9,8 +9,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -20,9 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.Load;
+import main.Main;
 
 @SuppressWarnings("serial")
-public class Mainmenu extends JFrame implements ActionListener, MouseListener {
+public class Mainmenu extends JFrame implements ActionListener{
 	private Load load=Load.getInstance();
 	private Spreadp spreadp=Spreadp.getInstance();
 	private JPanel mp=Mpanel.panel();
@@ -60,11 +59,6 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 		bk.add("Center",mp);
 		bk.add("South",btn());
 		this.setVisible(true);
-		JButton a=new JButton();// 마우스 포인터
-		a.addMouseListener(this);
-		a.setOpaque(false);
-		this.add(a);
-		a.setBounds(0, 0, 100, 100);
 	}
 	
 	private JPanel btn() {
@@ -121,40 +115,4 @@ public class Mainmenu extends JFrame implements ActionListener, MouseListener {
 	public static Image getRanimg() {
 		return ranimg;
 	}
-
-	//마우스 좌표 확인용
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		System.out.println(e.getX()+" "+e.getY());
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
-	
-
 }

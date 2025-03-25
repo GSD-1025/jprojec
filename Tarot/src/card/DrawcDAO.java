@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import main.BasicDAO;
+
 public class DrawcDAO extends BasicDAO{
 	
 	public ArrayList<DrawcDTO> drawload(){	

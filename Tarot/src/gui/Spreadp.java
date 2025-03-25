@@ -456,11 +456,4 @@ public class Spreadp extends JPanel implements ActionListener{
 			userp.revul();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 }

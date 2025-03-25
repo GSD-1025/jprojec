@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Mpanel extends JPanel{
-
-	
 	
 	public static JPanel panel() {
 		JPanel panel = new JPanel();

@@ -19,7 +19,6 @@ public class Load {
 	private ArrayList<UserDTO> ulist=userLoad();
 	private ArrayList<DrawcDTO> dlist=new ArrayList<DrawcDTO>();
 	
-	
 	public static Load getInstance() {
 		if(load==null) {
 			load=new Load();

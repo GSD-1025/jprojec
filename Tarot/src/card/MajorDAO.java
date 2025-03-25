@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import main.BasicDAO;
+
 public class MajorDAO extends BasicDAO{
 
 	
@@ -44,6 +46,4 @@ public class MajorDAO extends BasicDAO{
 		}
 		return mlist;
 	}
-		
-
 }
