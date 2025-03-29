@@ -18,7 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.Load;
-import main.Main;
+
+
+
 
 @SuppressWarnings("serial")
 public class Mainmenu extends JFrame implements ActionListener{

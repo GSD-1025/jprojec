@@ -30,7 +30,7 @@ public class UserDAO extends BasicDAO{
 				ulist.add(u);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO: handle Oexception
 		}finally {
 			try {
 				rs.close();

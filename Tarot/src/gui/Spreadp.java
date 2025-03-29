@@ -247,6 +247,7 @@ public class Spreadp extends JPanel implements ActionListener{
 		d.setVisible(true);
 	}
 	
+	
 	private JLabel title() {
 		JLabel lb=new JLabel(user);
 		lb.setFont(new Font(Font.SERIF,Font.BOLD|Font.ITALIC,35));
