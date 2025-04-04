@@ -80,4 +80,5 @@ insert into minor values('나이트','동전','유용, 재산',misq1.nextval,'�
 insert into minor values('퀸','동전','부, 관대',misq1.nextval,'‪D:\그림\마이너1\펜타클 퀸.jpg');
 insert into minor values('킹','동전','실제적인 지성, 사업',misq1.nextval,'‪D:\그림\마이너1\펜타클 킹.jpg');
 
+insert into minor values('0000',NULL,NULL,O,'NULL);
 
