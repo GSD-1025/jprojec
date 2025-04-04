@@ -49,7 +49,7 @@ insert into major values('20','심판','정방향','부활, 개선',mjsq1.nextva
 insert into major values('20','심판','역방향','재기불능, 후회',mjsq1.nextval,'D:\그림\메이저\20. 심판 카드-역.jpg');
 insert into major values('21','세계','정방향','완성, 완전',mjsq1.nextval,'D:\그림\메이저\21. 세계 카드.jpg');
 insert into major values('21','세계','역방향','미완성 어중간함',mjsq1.nextval,'D:\그림\메이저\21. 세계 카드-역.jpg');
-
+insert into major values('0000',NULL,NULL,NULL,0,NULL);
 
 
 
