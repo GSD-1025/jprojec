@@ -437,6 +437,7 @@ public class Spreadp extends JPanel implements ActionListener{
 		}else if(e.getSource()==btn7) {
 			DrawcDAO ddao=new DrawcDAO();
 			ddao.insert(dcard);
+			load.drawload();
 			tres.setPnum(ddao.pnumload(dcard));
 			tres.setInterpret(tinp.getText());
 			tres.setInterway(inpway.getSelectedValue());
