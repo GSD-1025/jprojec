@@ -76,7 +76,11 @@ IDE: Eclipse
 ## 🎬 프로젝트 시연
 프로그램의 실제 실행 화면과 기능들을 보여주는 시연 영상입니다.
 
-<img width="1326" height="948" alt="image" src="https://github.com/user-attachments/assets/9263be88-bb0b-4860-a0d7-07ee550cf325" />
+
+
+https://github.com/user-attachments/assets/79f50af5-96e3-4997-9f69-57f293de48b3
+
+
 
 
 <br>
